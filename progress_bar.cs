@@ -7,15 +7,15 @@ public partial class ProgressBar : Godot.ProgressBar
 	
 	// Called when the node enters the scene tree for the first time.
 	
-	public override void hpLoseHealth(){
+	public void hpLoseHealth(){
 
 			hp--; 
-			Godot.ProgressBar = hp;
+			this.Value = hp;
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void hpGainHealth(){
+	public void hpGainHealth(){
 			hp++;
-			healthbar.value = hp;
+			this.Value = hp;
 	}
 }
 
