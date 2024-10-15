@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bygiepuopu3m6"]
+[gd_scene load_steps=10 format=3 uid="uid://bygiepuopu3m6"]
 
 [ext_resource type="Texture2D" uid="uid://boeidu4acjivl" path="res://Assets/Sprite/penguin.png" id="1_3bui6"]
+[ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_s1a0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oan60"]
 atlas = ExtResource("1_3bui6")
@@ -49,6 +50,7 @@ animations = [{
 radius = 6.08276
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_s1a0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
