@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://bygiepuopu3m6"]
+
+[ext_resource type="Texture2D" uid="uid://boeidu4acjivl" path="res://Assets/Sprite/penguin.png" id="1_3bui6"]
+[ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_s1a0l"]
+[ext_resource type="PackedScene" uid="uid://dpcu6cb5objpl" path="res://Assets/Nodes/HealthBar.tscn" id="3_vku10"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oan60"]
+atlas = ExtResource("1_3bui6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ca6"]
+atlas = ExtResource("1_3bui6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8144g"]
+atlas = ExtResource("1_3bui6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5jvl"]
+atlas = ExtResource("1_3bui6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yml0o"]
+atlas = ExtResource("1_3bui6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6k3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oan60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ca6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8144g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5jvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yml0o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_urhh0"]
+radius = 6.08276
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_s1a0l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_j6k3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_urhh0")
+
+[node name="Control" parent="." instance=ExtResource("3_vku10")]

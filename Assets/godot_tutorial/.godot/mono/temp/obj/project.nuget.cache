@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "KsnmoHeMpQI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Aaron\\Documents\\Team-12\\Assets\\godot_tutorial\\godot_tutorial.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Aaron\\.nuget\\packages\\godot.sourcegenerators\\4.3.0\\godot.sourcegenerators.4.3.0.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\godotsharp\\4.3.0\\godotsharp.4.3.0.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\godotsharpeditor\\4.3.0\\godotsharpeditor.4.3.0.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.35\\microsoft.netcore.app.ref.6.0.35.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.35\\microsoft.windowsdesktop.app.ref.6.0.35.nupkg.sha512",
+    "C:\\Users\\Aaron\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.35\\microsoft.aspnetcore.app.ref.6.0.35.nupkg.sha512"
+  ],
+  "logs": []
+}
