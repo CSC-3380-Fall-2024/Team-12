@@ -19,13 +19,19 @@ grow_vertical = 2
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 offset_right = 308.0
 offset_bottom = 27.0
 =======
+=======
+>>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 offset_left = 269.0
 offset_top = 248.0
 offset_right = 462.0
 offset_bottom = 275.0
+<<<<<<< HEAD
+>>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
+=======
 >>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 max_value = 5.0
 value = 2.0
@@ -35,15 +41,21 @@ script = ExtResource("1_hjm1k")
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 offset_left = 56.0
 offset_top = 67.0
 offset_right = 117.0
 offset_bottom = 93.0
 =======
+=======
+>>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 offset_left = 161.0
 offset_top = 95.0
 offset_right = 419.0
 offset_bottom = 194.0
+<<<<<<< HEAD
+>>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
+=======
 >>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 script = ExtResource("2_fxmdx")
 progressBarPath = NodePath("../ProgressBar")
@@ -51,15 +63,21 @@ progressBarPath = NodePath("../ProgressBar")
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 offset_left = 136.0
 offset_top = 67.0
 offset_right = 187.0
 offset_bottom = 91.0
 =======
+=======
+>>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 offset_left = 486.0
 offset_top = 110.0
 offset_right = 699.0
 offset_bottom = 208.0
+<<<<<<< HEAD
+>>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
+=======
 >>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 script = ExtResource("3_yte10")
 progressBarPath = NodePath("../ProgressBar")
