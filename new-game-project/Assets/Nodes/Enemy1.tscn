@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b671re5asb47p"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Enemy1.cs" id="1_lhvwn"]
+[ext_resource type="Texture2D" uid="uid://buqmfhjldfhvc" path="res://icon.svg" id="1_u827r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_magev"]
+atlas = ExtResource("1_u827r")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okape"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_magev")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0a0o"]
+size = Vector2(120, 124)
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_lhvwn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -65)
+sprite_frames = SubResource("SpriteFrames_okape")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -62)
+shape = SubResource("RectangleShape2D_c0a0o")
