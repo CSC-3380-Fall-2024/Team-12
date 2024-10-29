@@ -43,7 +43,7 @@ public partial class LoadingScreen : Control
 		GetTree().ChangeSceneToFile(pathToScene);
 	}
 
-	public void StatusLoaded() {
+ 	public void StatusLoaded() {
 		loading.Value = 100;
 		loadingNow = false;
 	}
