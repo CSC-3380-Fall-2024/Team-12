@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk4gw4nd6aemu"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/StartMenu.cs" id="1_0wis2"]
+[ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="2_36uyo"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_0wis2")
+
+[node name="StartGame" type="Button" parent="."]
+offset_left = 196.0
+offset_top = 321.0
+offset_right = 480.0
+offset_bottom = 441.0
+text = "Click To Start Game!"
+
+[node name="Loading" parent="." instance=ExtResource("2_36uyo")]
+visible = false
+
+[node name="GameName" type="Label" parent="."]
+offset_left = 258.0
+offset_top = 31.0
+offset_right = 853.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 41
+text = "                   BABY GAME"
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 613.0
+offset_top = 320.0
+offset_right = 910.0
+offset_bottom = 440.0
+text = "Settings Menu"
+
+[connection signal="pressed" from="StartGame" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]

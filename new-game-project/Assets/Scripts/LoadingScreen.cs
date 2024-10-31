@@ -5,11 +5,12 @@ using System.IO;
 public partial class LoadingScreen : Control
 {
 	private string pathToScene;
-	private ProgressBar loading; 
+	private Godot.ProgressBar loading; 
 	private bool loadingNow;
+	int count = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		loading = GetNode<ProgressBar>("LoadingBar");
+		loading = GetNode<Godot.ProgressBar>("LoadingBar");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,10 +22,12 @@ public partial class LoadingScreen : Control
 				loading.Value = Convert.ToDouble(loadingProgress[0]) * 100; //array returns a number from 0 - 1 of how much the file has loaded, multiply by 100 to get percent amount.
 			}
 			else if (amountLoaded == ResourceLoader.ThreadLoadStatus.Loaded) {
-				StatusLoaded();
+				loading.Value = 100;
+				loadingNow = false;
 			}
 		}
 		else {
+
 			if (Input.IsAnythingPressed()) {
 				EnterScene();
 			}
@@ -34,17 +37,11 @@ public partial class LoadingScreen : Control
 	public void LoadScene(string path) {
 		Show();
 		pathToScene = path;
-		GD.Print("Hey");
 		ResourceLoader.LoadThreadedRequest(pathToScene);
 		loadingNow = true;
 	}
 
 	public void EnterScene() {
 		GetTree().ChangeSceneToFile(pathToScene);
-	}
-
- 	public void StatusLoaded() {
-		loading.Value = 100;
-		loadingNow = false;
 	}
 }
