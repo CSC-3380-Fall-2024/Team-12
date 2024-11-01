@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2a0fmp81vfrd"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Topdown.cs" id="1_l2ark"]
+[ext_resource type="Texture2D" uid="uid://buqmfhjldfhvc" path="res://icon.svg" id="2_0apba"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_l2ark")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(2, -2)
+texture = ExtResource("2_0apba")

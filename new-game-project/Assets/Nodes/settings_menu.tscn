@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckhrl0wcwu07u"]
+[gd_scene load_steps=2 format=3 uid="uid://ckhrl0wcwu07u"]
 
-[ext_resource type="Script" path="res://SettingsMenu.cs" id="1_kadyo"]
-[ext_resource type="Script" path="res://Mute.cs" id="2_glfi8"]
+[ext_resource type="Script" path="res://Assets/Scripts/SettingsMenu.cs" id="1_kadyo"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -36,7 +35,6 @@ text = "Mute"
 
 [node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("2_glfi8")
 
 [node name="ExitSettings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

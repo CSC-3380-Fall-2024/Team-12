@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxkj5jnadoyml"
-path="res://.godot/imported/Wall.png-3b00f6b2c6e1de0dca88bc984d24500a.ctex"
+path="res://.godot/imported/Wall.png-36474caa6119e87527b83c07f09323a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Wall.png"
-dest_files=["res://.godot/imported/Wall.png-3b00f6b2c6e1de0dca88bc984d24500a.ctex"]
+source_file="res://Assets/Levels/LevelOneBackground/Wall.png"
+dest_files=["res://.godot/imported/Wall.png-36474caa6119e87527b83c07f09323a6.ctex"]
 
 [params]
 
