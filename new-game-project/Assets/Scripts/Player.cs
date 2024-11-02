@@ -1,6 +1,8 @@
 using Godot;
 using System;
 using System.Net.Http;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class Player : CharacterBody2D
 {
@@ -10,6 +12,7 @@ public partial class Player : CharacterBody2D
 	private ProgressBar health;
 	private int[] healtharray = new int[4];
 	
+	private bool interactable = false;
 	
 
 	//private Area2D attackHitbox;
@@ -17,7 +20,7 @@ public partial class Player : CharacterBody2D
      public override void _Ready()
      {
 		health = GetNode<ProgressBar>("Control/ProgressBar");
-		healtharray[1] = 2;
+		healtharray[1] = 0;
 		hparray();
     //     attackHitbox = GetNode<Area2D>("AttackHit");
 	// 	attackHitbox.Monitoring = false;
@@ -84,10 +87,30 @@ public partial class Player : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 
+		if (interactable && Input.IsActionJustPressed("interact")){
+
+			GD.Print("Interacting in zone. Updating health...");
+			healtharray[1] = 1;
+			hparray();
+		}
+	}
+		public void AreaEntered(Node body){
+			if (body is Player){
+				interactable = true;
+			
+			}
+			
+		}
+		public void AreaExited(Node body){
+			if (body is Player){
+			interactable = false;
+			}
+		}
+
 		// if (Input.IsActionJustPressed("attack")){
 		// 	Attack();
 		// }
 
 	}
 
-}
+

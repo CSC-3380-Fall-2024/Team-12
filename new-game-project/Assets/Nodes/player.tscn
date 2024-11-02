@@ -53,7 +53,8 @@ size = Vector2(28, 12)
 [sub_resource type="CircleShape2D" id="CircleShape2D_urhh0"]
 radius = 6.08276
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_s1a0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
