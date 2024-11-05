@@ -62,3 +62,8 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_urhh0")
 
 [node name="Control" parent="." instance=ExtResource("3_vku10")]
+visible = false
+offset_left = -432.0
+offset_top = -229.0
+offset_right = -432.0
+offset_bottom = -229.0
