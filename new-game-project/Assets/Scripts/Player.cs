@@ -3,38 +3,77 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 150f;
-	public const float JumpVelocity = -200f;
+	public const float Speed = 150f;              // Max speed of the player
+	public const float JUMP_VELOCITY = -700f;     // Jump velocity
+	public const float GRAVITY = 2000f;            // Gravity force
+	public const float JUMP_DELAY = 0.2f;          // Delay in seconds before jump happens
+	public const float DECELERATION = 600f;        // Deceleration factor
+	public const float ACCELERATION = 800f;        // Acceleration factor
+
+	private Timer jumpTimer;
+	private bool jumpRequested = false;
+
+	private AnimatedSprite2D sprite;
+
+	public override void _Ready()
+	{
+		// Instantiate and configure the jump delay timer
+		jumpTimer = new Timer
+		{
+			WaitTime = JUMP_DELAY,
+			OneShot = true
+		};
+		AddChild(jumpTimer);
+		jumpTimer.Timeout += OnJumpTimerTimeout;  // Connect the timeout signal
+
+		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		// Get input for horizontal movement
+		float horizontalInput = Input.GetAxis("move_left", "move_right");
+		float velocityY = Velocity.Y; // Store current vertical velocity
+		float targetSpeed = horizontalInput * Speed; // Calculate target speed based on input
 
-		// Add the gravity.
-		if (!IsOnFloor())
+		// Accelerate or decelerate based on input
+		if (horizontalInput != 0)
 		{
-			velocity += GetGravity() * (float)delta;
-		}
+			// Accelerate towards target speed
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
-		{
-			velocity.Y = JumpVelocity;
-		}
-
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
-		{
-			velocity.X = direction.X * Speed;
+			sprite.FlipH = horizontalInput < 0;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			// Apply deceleration
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, 0, DECELERATION * (float)delta), velocityY);
 		}
 
-		Velocity = velocity;
+		// Check for jump input and ensure the player is on the floor
+		if (Input.IsActionJustPressed("jump") && jumpTimer.IsStopped() && IsOnFloor())
+		{
+			jumpRequested = true;
+			jumpTimer.Start();  // Start the jump delay timer
+		}
+
+		// Apply gravity if not jumping
+		if (!jumpRequested)
+		{
+			velocityY += GRAVITY * (float)delta;
+		}
+
+		Velocity = new Vector2(Velocity.X, velocityY); // Update velocity
 		MoveAndSlide();
+	}
+
+	private void OnJumpTimerTimeout()
+	{
+		// Only jump if the jump was requested
+		if (jumpRequested)
+		{
+			Velocity = new Vector2(Velocity.X, JUMP_VELOCITY);
+			jumpRequested = false; // Reset jump request
+		}
 	}
 }
