@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://wappe8mj2fka"]
+
+[ext_resource type="Texture2D" uid="uid://b10h00tx8i28q" path="res://Assets/Levels/LevelOneBackground/BG_Img/Bg_Chest.png" id="1_0ecxv"]
+
+[node name="Chest" type="Sprite2D"]
+position = Vector2(542, 480)
+texture = ExtResource("1_0ecxv")
