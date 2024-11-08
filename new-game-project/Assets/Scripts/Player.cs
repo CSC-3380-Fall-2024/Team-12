@@ -9,82 +9,50 @@ public partial class Player : CharacterBody2D
 	public const float Speed = 150f;
 	public const float JumpVelocity = -200f;
 
-	private ProgressBar health;
-	private int[] healtharray = new int[4];
-	
-	private bool interactable = false;
-	
-
-	//private Area2D attackHitbox;
-
-     public override void _Ready()
-     {
-		health = GetNode<ProgressBar>("Control/ProgressBar");
-		healtharray[1] = 0;
-		hparray();
-    //     attackHitbox = GetNode<Area2D>("AttackHit");
-	// 	attackHitbox.Monitoring = false;
-	// 	attackHitbox.BodyEntered += Onhitbox;
-     }
-	 public void hparray()
-	 {
-		if (healtharray[1] == 0)
-		{
-			health.hp = 10;
-		}else if ( healtharray[1] == 1){
-		health.hp = 20;
-
-	 }else if (healtharray [1] == 2){
-		health.hp = 30;
-	 }
-
-	 health.Value = health.hp;
-	 }
-	 
-	// public void Attack(){
-	// 	attackHitbox.Monitoring = true;
-	// 	SceneTreeTimer attackHitboxtime = GetTree().CreateTimer(0.5f);
-	// 	attackHitboxtime.Timeout += noAttacky;
-		
-	// }
-	// public void noAttacky(){
-	// 	attackHitbox.Monitoring = false;
-	// }
-	// public void Onhitbox(Node body){
-	// 	if (body.HasMethod("hpLoseHealth")){
-	// 		body.Call("hpLoseHealth");
-	// 	}
-	// }
-
     public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		//input handling
+		float horizontalInput = Input.GetAxis("move_left", "move_right");
+		float velocityY = Velocity.Y;
+		float targetSpeed = horizontalInput * Speed;
 
-		// Add the gravity.
-		if (!IsOnFloor())
+		if (horizontalInput != 0)
 		{
-			velocity += GetGravity() * (float)delta;
-		}
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+			sprite.FlipH = horizontalInput < 0;
+		}
+		else
 		{
 			velocity.Y = JumpVelocity;
 		}
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+		if (Input.IsActionJustPressed("jump") && jumpTimer.IsStopped() && IsOnFloor())
 		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
+
+			sprite.FlipH = horizontalInput < 0;
 		}
 
-		Velocity = velocity;
+
+		if (!jumpRequested)
+		{
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, 0, DECELERATION * (float)delta), velocityY);
+		}
+
+		if (Input.IsActionJustPressed("jump") && jumpTimer.IsStopped() && IsOnFloor())
+		{
+			jumpRequested = true;
+			jumpTimer.Start();
+		}
+
+
+		if (!jumpRequested)
+		{
+			velocityY += GRAVITY * (float)delta;
+		}
+
+		Velocity = new Vector2(Velocity.X, velocityY);
 		MoveAndSlide();
 
 		if (interactable && Input.IsActionJustPressed("interact")){
@@ -94,6 +62,7 @@ public partial class Player : CharacterBody2D
 			hparray();
 		}
 	}
+<<<<<<< HEAD
 		public void AreaEntered(Node body){
 			if (body is Player){
 				interactable = true;
@@ -114,3 +83,16 @@ public partial class Player : CharacterBody2D
 	}
 
 
+=======
+
+	private void OnJumpTimerTimeout()
+	{
+
+		if (jumpRequested)
+		{
+			Velocity = new Vector2(Velocity.X, JUMP_VELOCITY);
+			jumpRequested = false;
+		}
+	}
+}
+>>>>>>> origin/dev
