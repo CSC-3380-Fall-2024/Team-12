@@ -14,48 +14,30 @@ public partial class Player : CharacterBody2D
 	
 	private bool interactable = false;
 	
+	private bool interactableCookie = false;
 
-	//private Area2D attackHitbox;
 
      public override void _Ready()
      {
 		health = GetNode<ProgressBar>("Control/ProgressBar");
 		healtharray[1] = 0;
 		hparray();
-    //     attackHitbox = GetNode<Area2D>("AttackHit");
-	// 	attackHitbox.Monitoring = false;
-	// 	attackHitbox.BodyEntered += Onhitbox;
      }
 	 public void hparray()
 	 {
 		if (healtharray[1] == 0)
 		{
-			health.hp = 10;
+			health.hp = 5;
 		}else if ( healtharray[1] == 1){
-		health.hp = 20;
+		health.hp = 10;
 
 	 }else if (healtharray [1] == 2){
-		health.hp = 30;
+		health.hp = 15;
 	 }
 
 	 health.Value = health.hp;
 	 }
 	 
-	// public void Attack(){
-	// 	attackHitbox.Monitoring = true;
-	// 	SceneTreeTimer attackHitboxtime = GetTree().CreateTimer(0.5f);
-	// 	attackHitboxtime.Timeout += noAttacky;
-		
-	// }
-	// public void noAttacky(){
-	// 	attackHitbox.Monitoring = false;
-	// }
-	// public void Onhitbox(Node body){
-	// 	if (body.HasMethod("hpLoseHealth")){
-	// 		body.Call("hpLoseHealth");
-	// 	}
-	// }
-
     public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -88,29 +70,54 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 
 		if (interactable && Input.IsActionJustPressed("interact")){
-
+			interactableCookie = false;
 			GD.Print("Interacting in zone. Updating health...");
 			healtharray[1] = 1;
 			hparray();
+			interactable = false;
 		}
+
+		if (interactableCookie && Input.IsActionJustPressed("food")){
+			interactable = false;
+			GD.Print("your gay 9000000000");
+			hparray();
+			interactableCookie = false;
+			
+		}
+		
 	}
 		public void AreaEntered(Node body){
 			if (body is Player){
+				
 				interactable = true;
+				GD.Print("Player entered a general area");
 			
 			}
 			
 		}
 		public void AreaExited(Node body){
 			if (body is Player){
+				
 			interactable = false;
+			GD.Print("Player entered a general area");
 			}
 		}
+		
 
-		// if (Input.IsActionJustPressed("attack")){
-		// 	Attack();
-		// }
-
+		public void AreaEnteredHP(Node body){
+			if (body is Player){
+				interactableCookie = true;
+	
+				GD.Print("your gay 1");
+			
+			}
+		}
+		public void AreaExitedHP(Node body){
+			if (body is Player){
+			interactableCookie = false;
+			GD.Print("your gay 3");
+			}
+		}
 	}
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1x8lo6pq0dbp"]
+[gd_scene load_steps=5 format=3 uid="uid://d1x8lo6pq0dbp"]
 
 [ext_resource type="PackedScene" uid="uid://bygiepuopu3m6" path="res://Assets/Nodes/player.tscn" id="1_81qdy"]
 [ext_resource type="PackedScene" uid="uid://c3ij78lnm7d8j" path="res://interaction_area.tscn" id="2_3qh6s"]
+[ext_resource type="PackedScene" uid="uid://ci75vtde4y27b" path="res://interaction_area_cookie.tscn" id="3_ibfl7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ny31d"]
 
@@ -19,4 +20,10 @@ position = Vector2(0, -4)
 shape = SubResource("WorldBoundaryShape2D_ny31d")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_3qh6s")]
-position = Vector2(82, -12)
+position = Vector2(69, -12)
+
+[node name="InteractionAreaCookie" parent="." instance=ExtResource("3_ibfl7")]
+position = Vector2(-67, -14)
+
+[connection signal="body_entered" from="InteractionAreaCookie" to="CharacterBody2D" method="AreaEnteredHP"]
+[connection signal="body_exited" from="InteractionAreaCookie" to="CharacterBody2D" method="AreaExitedHP"]
