@@ -1,40 +1,98 @@
 using Godot;
 using System;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class Player : CharacterBody2D
 {
 	public const float Speed = 150f;
 	public const float JumpVelocity = -200f;
 
-	public override void _PhysicsProcess(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
+		//input handling
+		float horizontalInput = Input.GetAxis("move_left", "move_right");
+		float velocityY = Velocity.Y;
+		float targetSpeed = horizontalInput * Speed;
 
-		// Add the gravity.
-		if (!IsOnFloor())
+		if (horizontalInput != 0)
 		{
-			velocity += GetGravity() * (float)delta;
-		}
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+			sprite.FlipH = horizontalInput < 0;
+		}
+		else
 		{
 			velocity.Y = JumpVelocity;
 		}
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		if (direction != Vector2.Zero)
+		if (Input.IsActionJustPressed("jump") && jumpTimer.IsStopped() && IsOnFloor())
 		{
-			velocity.X = direction.X * Speed;
-		}
-		else
-		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
+
+			sprite.FlipH = horizontalInput < 0;
 		}
 
-		Velocity = velocity;
+
+		if (!jumpRequested)
+		{
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, 0, DECELERATION * (float)delta), velocityY);
+		}
+
+		if (Input.IsActionJustPressed("jump") && jumpTimer.IsStopped() && IsOnFloor())
+		{
+			jumpRequested = true;
+			jumpTimer.Start();
+		}
+
+
+		if (!jumpRequested)
+		{
+			velocityY += GRAVITY * (float)delta;
+		}
+
+		Velocity = new Vector2(Velocity.X, velocityY);
 		MoveAndSlide();
+
+		if (interactable && Input.IsActionJustPressed("interact")){
+
+			GD.Print("Interacting in zone. Updating health...");
+			healtharray[1] = 1;
+			hparray();
+		}
+	}
+<<<<<<< HEAD
+		public void AreaEntered(Node body){
+			if (body is Player){
+				interactable = true;
+			
+			}
+			
+		}
+		public void AreaExited(Node body){
+			if (body is Player){
+			interactable = false;
+			}
+		}
+
+		// if (Input.IsActionJustPressed("attack")){
+		// 	Attack();
+		// }
+
+	}
+
+
+=======
+
+	private void OnJumpTimerTimeout()
+	{
+
+		if (jumpRequested)
+		{
+			Velocity = new Vector2(Velocity.X, JUMP_VELOCITY);
+			jumpRequested = false;
+		}
 	}
 }
+>>>>>>> origin/dev
