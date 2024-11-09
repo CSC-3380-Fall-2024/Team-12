@@ -39,4 +39,36 @@ public partial class SettingsMenu : Control
 	public void _on_exit_settings_pressed() {
 		GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn"); //Change to change back to whatever scene it came from
 	}
+
+	public void _on_change_resolution_item_selected(int index) {
+		if (index == 0) {
+			ChangeToFullScreen();
+		}
+		else if (index == 1) {
+			ChangeToWindowed();
+		}
+		else if (index == 2) {
+			ChangeToBorderlessFullScreen();
+		}
+		else {
+			ChangeToBorderlessWindowed();
+		}
+	}
+
+	public void ChangeToFullScreen() {
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false);
+	}
+	public void ChangeToWindowed() {
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false);
+	}
+	public void ChangeToBorderlessFullScreen() {
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
+	}
+	public void ChangeToBorderlessWindowed() {
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
+	}
 }
