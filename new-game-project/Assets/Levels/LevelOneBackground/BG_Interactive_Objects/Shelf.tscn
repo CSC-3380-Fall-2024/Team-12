@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://db7glncx6t5nm"]
+
+[ext_resource type="Texture2D" uid="uid://wyi3w7krjgp8" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Shelf1.png" id="1_rewao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lubyd"]
+size = Vector2(86.1365, 6.23377)
+
+[node name="Shelf" type="Node2D"]
+position = Vector2(1033, 571)
+scale = Vector2(1.5125, 1.925)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rewao")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.0930786, 2.07788)
+shape = SubResource("RectangleShape2D_lubyd")
