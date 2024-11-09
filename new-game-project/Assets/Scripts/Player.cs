@@ -71,7 +71,7 @@ public partial class Player : CharacterBody2D
 
 		if (interactable && Input.IsActionJustPressed("interact")){
 			interactableCookie = false;
-			GD.Print("Interacting in zone. Updating health...");
+			GD.Print("12565556-");
 			healtharray[1] = 1;
 			hparray();
 			interactable = false;
@@ -79,7 +79,7 @@ public partial class Player : CharacterBody2D
 
 		if (interactableCookie && Input.IsActionJustPressed("food")){
 			interactable = false;
-			GD.Print("your gay 9000000000");
+			GD.Print("9000000000");
 			hparray();
 			interactableCookie = false;
 			
@@ -90,7 +90,7 @@ public partial class Player : CharacterBody2D
 			if (body is Player){
 				
 				interactable = true;
-				GD.Print("Player entered a general area");
+				GD.Print("7412454");
 			
 			}
 			
@@ -99,7 +99,7 @@ public partial class Player : CharacterBody2D
 			if (body is Player){
 				
 			interactable = false;
-			GD.Print("Player entered a general area");
+			GD.Print("235625489654");
 			}
 		}
 		
