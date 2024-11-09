@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpfag6oxiry3y"]
+
+[ext_resource type="Texture2D" uid="uid://dbo2i3m4cwfy4" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Bed.png" id="1_glq82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lubyd"]
+size = Vector2(100.868, 16.1689)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gbpt"]
+size = Vector2(94.6281, 7.92209)
+
+[node name="Bed" type="Node2D"]
+position = Vector2(1033, 571)
+scale = Vector2(1.5125, 1.925)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_glq82")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.372009, 31.2338)
+shape = SubResource("RectangleShape2D_lubyd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1.03308, 20.0649)
+shape = SubResource("RectangleShape2D_8gbpt")
