@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 InteractionManager="*res://Assets/interaction/InteractionManager.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
 [dotnet]
 
 project/assembly_name="New Game Project"

@@ -36,11 +36,29 @@ text = "Mute"
 [node name="Mute" type="CheckBox" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="ChangeResolution" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+item_count = 4
+popup/item_0/text = "Full Screen"
+popup/item_1/text = "Window"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless Full Screen"
+popup/item_2/id = 2
+popup/item_3/text = "Borderless Window"
+popup/item_3/id = 3
+
 [node name="ExitSettings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
 text = "Exit Settings Menu
 "
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Volume Control" to="." method="_on_h_slider_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ChangeResolution" to="." method="_on_change_resolution_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ExitSettings" to="." method="_on_exit_settings_pressed"]
