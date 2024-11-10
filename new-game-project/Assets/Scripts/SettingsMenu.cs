@@ -5,12 +5,16 @@ public partial class SettingsMenu : Control
 {
 	HSlider slide;
 	CheckBox check;
-	Button button;
+	OptionButton window;
 	float volume = 0;
-	bool muted = false;
+	ConfigFile config = new ConfigFile();
 
 
 	public override void _Ready() {
+		slide = GetNode<HSlider>("MarginContainer/VBoxContainer/VolumeControl");
+		check = GetNode<CheckBox>("MarginContainer/VBoxContainer/Mute");
+		window = GetNode<OptionButton>("MarginContainer/VBoxContainer/ChangeWindow");
+		LoadData();
 	}
 
 
@@ -23,6 +27,7 @@ public partial class SettingsMenu : Control
 		}
 		volume = value;
 		AudioServer.SetBusVolumeDb(0, value/3);
+		SaveData("VolumeLevel", (Variant)value);
 	}
 
 	public void _on_mute_toggled(bool toggled) {
@@ -34,6 +39,7 @@ public partial class SettingsMenu : Control
 		}
 
 		AudioServer.SetBusMute(0, toggled);
+		SaveData("MuteOption", (Variant)toggled);
 	}
 
 	public void _on_exit_settings_pressed() {
@@ -53,6 +59,22 @@ public partial class SettingsMenu : Control
 		else {
 			ChangeToBorderlessWindowed();
 		}
+		SaveData("WindowOption", (Variant)index);
+	}
+
+	public void SaveData(string dataToSave, Variant value) {
+		config.SetValue("Settings", dataToSave, value);
+		config.Save("res://settings.cfg");
+	}
+
+	public void LoadData() {
+		Error err = config.Load("res://settings.cfg");
+		if (err != Error.Ok) {
+    		return;
+		}	
+		slide.Value = (float)config.GetValue("Settings", "VolumeLevel");
+		check.ButtonPressed = (bool)config.GetValue("Settings", "MuteOption");
+		window.Selected = (int)config.GetValue("Settings", "WindowOption");
 	}
 
 	public void ChangeToFullScreen() {
