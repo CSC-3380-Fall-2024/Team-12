@@ -1,15 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2h5cqmr4j70s"]
+[gd_scene load_steps=4 format=3 uid="uid://cixwm7dtc78h6"]
 
-[ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/Parralax_BG/bg.tscn" id="1_i7u6x"]
-[ext_resource type="Script" path="res://Assets/Scripts/BG_Img.cs" id="2_7dpj0"]
-[ext_resource type="PackedScene" uid="uid://cgn620sl6u7gh" path="res://Assets/Levels/LevelOneBackground/Parralax_BG/ground.tscn" id="3_433yo"]
-[ext_resource type="Script" path="res://Assets/Scripts/BgObjSpawner.cs" id="4_auere"]
-[ext_resource type="PackedScene" uid="uid://fetlwkajh7ca" path="res://Assets/Levels/LevelOneBackground/BG_Img/Window.tscn" id="4_ub2v0"]
-[ext_resource type="PackedScene" uid="uid://wappe8mj2fka" path="res://Assets/Levels/LevelOneBackground/BG_Img/Chest.tscn" id="5_nm83n"]
-[ext_resource type="PackedScene" uid="uid://bk4p1h0w3u0sq" path="res://Assets/Levels/LevelOneBackground/BG_Img/BookShelf.tscn" id="6_xe2ee"]
-[ext_resource type="PackedScene" uid="uid://db7glncx6t5nm" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Shelf.tscn" id="8_45pt0"]
-[ext_resource type="PackedScene" uid="uid://0qcglxoosdgj" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Table.tscn" id="9_ieelx"]
-[ext_resource type="PackedScene" uid="uid://bpfag6oxiry3y" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Bed.tscn" id="10_sepg4"]
+[ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/bg.tscn" id="1_i7u6x"]
+[ext_resource type="PackedScene" uid="uid://cgn620sl6u7gh" path="res://Assets/Levels/LevelOneBackground/ground.tscn" id="3_433yo"]
+[ext_resource type="PackedScene" uid="uid://c8cqe8b01a4m2" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
 
 [node name="LevelOne" type="Node2D"]
 
@@ -19,13 +12,8 @@
 position = Vector2(48, 728)
 
 [node name="BG_Img_Spawner" type="Node2D" parent="."]
-script = ExtResource("2_7dpj0")
-Window = ExtResource("4_ub2v0")
-Chest = ExtResource("5_nm83n")
-Bookshelf = ExtResource("6_xe2ee")
 
 [node name="BG_Obj_Spawner" type="Node2D" parent="."]
-script = ExtResource("4_auere")
-Shelf = ExtResource("8_45pt0")
-Table = ExtResource("9_ieelx")
-Bed = ExtResource("10_sepg4")
+
+[node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
+position = Vector2(104, 283)
