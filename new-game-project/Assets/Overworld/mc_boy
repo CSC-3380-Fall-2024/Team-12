@@ -1,76 +1,51 @@
-using UnityEngine;
+extends CharacterBody2D
 
-public class CharacterController2D : MonoBehaviour
-{
-    private const float ACCELERATION = 800f;
-    private const float FRICTION = 500f;
-    private const float MAX_SPEED = 120f;
+const ACCELERATION = 800
+const FRICTION = 500
+const MAX_SPEED = 120
 
-    private enum State { IDLE, RUN }
-    private State state = State.IDLE;
+enum {IDLE, RUN}
+var state = IDLE
 
-    private Vector2 velocity;
-    private Vector2 blendPosition = Vector2.zero;
+@onready var animationTree = $AnimationTree
+@onready var state_machine = animationTree["parameters/playback"]
 
-    private Animator animator;
-    private string[] animationStateKeys = { "idle", "run" };
+var blend_position : Vector2 = Vector2.ZERO
+var blend_pos_paths = [
+	"parameters/idle/idle_bs2d/blend_position",
+	"parameters/run/run_bs2d/blend_position"
+]
 
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+var animeTree_state_keys = [
+	"idle",
+	"run"
+]
 
-    void Update()
-    {
-        float delta = Time.deltaTime;
-        Move(delta);
-        Animate();
-    }
+func _physics_process(delta):
+	move(delta)
+	animate()
 
-    private void Move(float delta)
-    {
-        Vector2 inputVector = new Vector2(
-            Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical")
-        ).normalized;
+func move(delta):
+	var input_vector = Input.get_vector("move_left","move_right","move_up","move_down")
+	if input_vector == Vector2.ZERO:
+		state = IDLE
+		apply_friction(FRICTION * delta)
+	else:
+		state = RUN
+		apply_movement(input_vector * ACCELERATION * delta)
+		blend_position = input_vector
+	move_and_slide()
 
-        if (inputVector == Vector2.zero)
-        {
-            state = State.IDLE;
-            ApplyFriction(FRICTION * delta);
-        }
-        else
-        {
-            state = State.RUN;
-            ApplyMovement(inputVector * ACCELERATION * delta);
-            blendPosition = inputVector;
-        }
+func apply_movement(amount) -> void:
+	velocity += amount
+	velocity = velocity.limit_length(MAX_SPEED)
 
-        transform.Translate(velocity * delta);
-    }
+func apply_friction(amount) -> void:
+	if velocity.length() > amount:
+		velocity -= velocity.normalized() * amount
+	else:
+		velocity = Vector2.ZERO
 
-    private void ApplyMovement(Vector2 amount)
-    {
-        velocity += amount;
-        velocity = Vector2.ClampMagnitude(velocity, MAX_SPEED);
-    }
-
-    private void ApplyFriction(float amount)
-    {
-        if (velocity.magnitude > amount)
-        {
-            velocity -= velocity.normalized * amount;
-        }
-        else
-        {
-            velocity = Vector2.zero;
-        }
-    }
-
-    private void Animate()
-    {
-        animator.Play(animationStateKeys[(int)state]);
-        animator.SetFloat("BlendX", blendPosition.x);
-        animator.SetFloat("BlendY", blendPosition.y);
-    }
-}
+func animate() -> void:
+	state_machine.travel(animeTree_state_keys[state])
+	animationTree.set(blend_pos_paths[state], blend_position)
