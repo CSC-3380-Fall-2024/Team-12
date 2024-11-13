@@ -14,6 +14,14 @@ public partial class Player : CharacterBody2D
 	public const float ACCELERATION = 800f;        // Acceleration factor
 
 
+	private ProgressBar health;
+	private int[] healtharray = new int[4];
+
+	private bool interactable = false;
+
+	private bool interactableCookie = false;
+
+
 	private Timer jumpTimer;
 	private bool jumpRequested = false;
 
@@ -32,7 +40,33 @@ public partial class Player : CharacterBody2D
 		jumpTimer.Timeout += OnJumpTimerTimeout;
 
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+
+		health = GetNode<ProgressBar>("Control/ProgressBar");
+		healtharray[1] = 0;
+		hparray();
+
 	}
+
+	public void hparray()
+	{
+		if (healtharray[1] == 0)
+		{
+			health.hp = 5;
+		}
+		else if (healtharray[1] == 1)
+		{
+			health.hp = 10;
+
+		}
+		else if (healtharray[1] == 2)
+		{
+			health.hp = 15;
+		}
+
+		health.Value = health.hp;
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
 		//input handling
@@ -68,17 +102,49 @@ public partial class Player : CharacterBody2D
 
 		if (interactable && Input.IsActionJustPressed("interact"))
 		{
-
+			interactableCookie = false;
 			GD.Print("Interacting in zone. Updating health...");
 			healtharray[1] = 1;
 			hparray();
+			interactable = false;
+		}
+
+		if (interactableCookie && Input.IsActionJustPressed("food"))
+		{
+			interactable = false;
+			GD.Print("your gay 9000000000");
+			hparray();
+			interactableCookie = false;
+
 		}
 	}
+	public void AreaEnteredHP(Node body)
+	{
+		if (body is Player)
+		{
+			interactableCookie = true;
+
+			GD.Print("your gay 1");
+
+		}
+	}
+
+	public void AreaExitedHP(Node body)
+	{
+		if (body is Player)
+		{
+			interactableCookie = false;
+			GD.Print("your gay 3");
+		}
+	}
+
 	public void AreaEntered(Node body)
 	{
 		if (body is Player)
 		{
+
 			interactable = true;
+			GD.Print("Player entered a general area");
 
 		}
 
@@ -87,9 +153,13 @@ public partial class Player : CharacterBody2D
 	{
 		if (body is Player)
 		{
+
 			interactable = false;
+			GD.Print("Player entered a general area");
 		}
 	}
+
+
 
 	// if (Input.IsActionJustPressed("attack")){
 	// 	Attack();
