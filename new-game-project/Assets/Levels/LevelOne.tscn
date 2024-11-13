@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cixwm7dtc78h6"]
+
+[ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/bg.tscn" id="1_ivv2v"]
+[ext_resource type="PackedScene" uid="uid://bygiepuopu3m6" path="res://Assets/Nodes/player.tscn" id="2_8vcbr"]
+
+[node name="LevelOne" type="Node2D"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_ivv2v")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_8vcbr")]
+position = Vector2(329, 548)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(249, -222)
+zoom = Vector2(1, 1.2)

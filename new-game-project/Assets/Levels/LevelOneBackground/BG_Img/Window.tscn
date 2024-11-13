@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://fetlwkajh7ca"]
+
+[ext_resource type="Texture2D" uid="uid://j2o55lfqnswp" path="res://Assets/Levels/LevelOneBackground/BG_Img/Bg_Window.png" id="1_x4p0f"]
+
+[node name="Window" type="Sprite2D"]
+position = Vector2(832, 401)
+scale = Vector2(1.19816, 1.16725)
+texture = ExtResource("1_x4p0f")
