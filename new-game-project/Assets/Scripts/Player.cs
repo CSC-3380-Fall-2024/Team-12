@@ -42,7 +42,7 @@ public partial class Player : CharacterBody2D
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
 
-		health = GetNode<ProgressBar>("Control/ProgressBar");
+		health = GetNode<ProgressBar>("HealthBar/ProgressBar");
 		healtharray[1] = 0;
 		hparray();
 
