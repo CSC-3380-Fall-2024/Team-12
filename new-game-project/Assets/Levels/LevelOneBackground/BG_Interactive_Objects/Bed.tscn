@@ -9,10 +9,11 @@ size = Vector2(100.868, 16.1689)
 size = Vector2(94.6281, 7.92209)
 
 [node name="Bed" type="Node2D"]
-position = Vector2(1033, 571)
-scale = Vector2(1.5125, 1.925)
+position = Vector2(3.00024, 5.00012)
+scale = Vector2(3, 3.817)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
 texture = ExtResource("1_glq82")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

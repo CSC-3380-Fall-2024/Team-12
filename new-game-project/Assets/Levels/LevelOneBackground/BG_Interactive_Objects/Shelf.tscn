@@ -10,10 +10,14 @@ position = Vector2(1033, 571)
 scale = Vector2(1.5125, 1.925)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
 texture = ExtResource("1_rewao")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+texture_filter = 1
 position = Vector2(-0.0930786, 2.07788)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_lubyd")
