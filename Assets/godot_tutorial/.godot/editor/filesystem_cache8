@@ -1,0 +1,11 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1731102334
+Green.png::CompressedTexture2D::4055487022930362696::1729026140::1731102334::1::::<><>::
+icon.svg::CompressedTexture2D::2295575234842549697::1729026140::1731102334::1::::<><>::
+Idle (32x32).png::CompressedTexture2D::4621010768673784924::1729026140::1731102334::1::::<><>::
+Jump (32x32).png::CompressedTexture2D::1960845654471868772::1729026140::1731102334::1::::<><>::
+main.tscn::PackedScene::1676758234136980685::1729026140::0::1::::<><>::uid://bx1rjqiepysge::::res://Green.png<>uid://jfrqy320smvs::::res://Terrain (16x16).png<>uid://c6kgialmp5bod::::res://scenes/main_char.tscn<>res://scenes/MainChar.cs
+Terrain (16x16).png::CompressedTexture2D::643083548167912588::1729026140::1731102334::1::::<><>::
+::res://scenes/::1729026140
+MainChar.cs::CSharpScript::-1::1729026140::0::1::::<><>::
+main_char.tscn::PackedScene::6969717903572941187::1729026140::0::1::::<><>::uid://b63pmwj2tojds::::res://Idle (32x32).png<>uid://eai8sy8vurkx::::res://Free/Main Characters/Pink Man/Jump (32x32).png<>uid://ci0ftxdj0yei8::::res://Free/Main Characters/Pink Man/Run (32x32).png

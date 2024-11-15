@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://0qcglxoosdgj"]
+
+[ext_resource type="Texture2D" uid="uid://cdueowunrmmn7" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Table.png" id="1_ifxfl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jexss"]
+size = Vector2(123, 12)
+
+[node name="Table" type="Node2D"]
+position = Vector2(1029, 597)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-24, -14.75)
+scale = Vector2(1.48, 1.39333)
+texture = ExtResource("1_ifxfl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-23.5, -33)
+shape = SubResource("RectangleShape2D_jexss")

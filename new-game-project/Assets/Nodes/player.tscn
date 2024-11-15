@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bygiepuopu3m6"]
+[gd_scene load_steps=12 format=3 uid="uid://bygiepuopu3m6"]
 
 [ext_resource type="Texture2D" uid="uid://boeidu4acjivl" path="res://Assets/Sprite/penguin.png" id="1_3bui6"]
 [ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_s1a0l"]
-[ext_resource type="PackedScene" uid="uid://dpcu6cb5objpl" path="res://Assets/Nodes/HealthBar.tscn" id="3_vku10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oan60"]
 atlas = ExtResource("1_3bui6")
@@ -47,23 +46,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_demlw"]
+size = Vector2(28, 12)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_urhh0"]
 radius = 6.08276
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
 script = ExtResource("1_s1a0l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_j6k3a")
 
+[node name="AttackHit" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AttackHit"]
+position = Vector2(19, 4)
+shape = SubResource("RectangleShape2D_demlw")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_urhh0")
 
 [node name="Control" parent="." instance=ExtResource("3_vku10")]
-visible = false
-offset_left = -150.0
-offset_top = -65.0
-offset_right = -150.0
-offset_bottom = -65.0
+offset_left = -410.0
+offset_top = -235.0
+offset_right = -410.0
+offset_bottom = -235.0
+
+[connection signal="area_entered" from="AnimatedSprite2D/AttackHit" to="." method="_on_attack_hit_area_entered"]

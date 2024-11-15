@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c0lt002xyildw"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = -100.0
+offset_top = -14.0
+offset_right = 101.0
+offset_bottom = 13.0
+max_value = 5.0
+value = 2.0

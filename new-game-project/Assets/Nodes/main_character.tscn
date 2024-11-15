@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8cqe8b01a4m2"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_lraqc"]
+[ext_resource type="Texture2D" uid="uid://buqmfhjldfhvc" path="res://icon.svg" id="2_tbfkb"]
+[ext_resource type="PackedScene" uid="uid://c0lt002xyildw" path="res://Assets/Nodes/health_bar.tscn" id="3_fpv2e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dq3f"]
+atlas = ExtResource("2_tbfkb")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a05ml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dq3f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2koc"]
+size = Vector2(114, 116)
+
+[node name="MainCharacter" type="CharacterBody2D"]
+script = ExtResource("1_lraqc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -65)
+sprite_frames = SubResource("SpriteFrames_a05ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -66)
+shape = SubResource("RectangleShape2D_j2koc")
+
+[node name="HealthBar" parent="." instance=ExtResource("3_fpv2e")]
+offset_left = 1.0
+offset_top = -192.0
+offset_right = 1.0
+offset_bottom = -192.0

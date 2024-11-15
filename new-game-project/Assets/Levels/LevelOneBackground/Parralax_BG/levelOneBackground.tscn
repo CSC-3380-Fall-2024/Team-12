@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsuekh1u6gvom"]
+
+[ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/bg.tscn" id="1_b42l4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i23d6"]
+size = Vector2(23029, 109.5)
+
+[node name="main" type="Node"]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_b42l4")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(11520, 595)
+shape = SubResource("RectangleShape2D_i23d6")

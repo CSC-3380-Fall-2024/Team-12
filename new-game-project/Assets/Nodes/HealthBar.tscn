@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpcu6cb5objpl"]
 
-[ext_resource type="Script" path="res://ProgressBar.cs" id="1_hjm1k"]
-[ext_resource type="Script" path="res://Button.cs" id="2_fxmdx"]
-[ext_resource type="Script" path="res://Button2.cs" id="3_yte10"]
+[ext_resource type="Script" path="res://Assets/Scripts/ProgressBar.cs" id="1_hjm1k"]
+[ext_resource type="Script" path="res://Assets/Scripts/Button.cs" id="2_fxmdx"]
+[ext_resource type="Script" path="res://Assets/Scripts/Button2.cs" id="3_yte10"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -51,7 +51,7 @@ offset_bottom = 93.0
 >>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
 offset_left = 161.0
 offset_top = 95.0
-offset_right = 419.0
+offset_right = 370.0
 offset_bottom = 194.0
 <<<<<<< HEAD
 >>>>>>> b517e6d17e30f1c21a3043ea4b0b2338c48a7e4c
