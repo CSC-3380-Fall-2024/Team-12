@@ -6,8 +6,8 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 150f;              // Max speed of the player
-	public const float JUMP_VELOCITY = -400f;     // Jump velocity
+	public const float Speed = 250f;              // Max speed of the player
+	public const float JUMP_VELOCITY = -800f;     // Jump velocity
 	public const float GRAVITY = 2000f;            // Gravity force
 	public const float JUMP_DELAY = 0.08f;          // Delay in seconds before jump happens
 	public const float DECELERATION = 600f;        // Deceleration factor
