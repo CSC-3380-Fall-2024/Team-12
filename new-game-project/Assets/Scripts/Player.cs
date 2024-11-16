@@ -112,7 +112,7 @@ public partial class Player : CharacterBody2D
 		if (interactableCookie && Input.IsActionJustPressed("food"))
 		{
 			interactable = false;
-			GD.Print("your gay 9000000000");
+			GD.Print("your 9000000000");
 			hparray();
 			interactableCookie = false;
 
@@ -124,7 +124,7 @@ public partial class Player : CharacterBody2D
 		{
 			interactableCookie = true;
 
-			GD.Print("your gay 1");
+			GD.Print("your 1");
 
 		}
 	}
@@ -134,7 +134,7 @@ public partial class Player : CharacterBody2D
 		if (body is Player)
 		{
 			interactableCookie = false;
-			GD.Print("your gay 3");
+			GD.Print("your 3");
 		}
 	}
 
