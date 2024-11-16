@@ -12,7 +12,7 @@ public partial class Game : Node2D
 	private void _on_child_entered_tree(Node child){
 		GD.Print($"Node entered: {child.Name}");
 		if(child.Name == "Sprite2D"){
-			GD.Print("Remove This shit");
+			GD.Print("Remove This");
 			 Node kid = GetNode<Node>("InteractionArea");	
         RemoveChild(kid);
         // Free the child node
