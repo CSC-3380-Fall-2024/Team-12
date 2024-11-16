@@ -70,7 +70,7 @@ public partial class SettingsMenu : Control
 	public void LoadData() {
 		Error err = config.Load("res://settings.cfg");
 		if (err != Error.Ok) {
-    		return;
+			return;
 		}	
 		slide.Value = (float)config.GetValue("Settings", "VolumeLevel");
 		check.ButtonPressed = (bool)config.GetValue("Settings", "MuteOption");

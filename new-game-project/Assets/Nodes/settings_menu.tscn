@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckhrl0wcwu07u"]
+[gd_scene load_steps=3 format=3 uid="uid://ckhrl0wcwu07u"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/SettingsMenu.cs" id="1_kadyo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryggr"]
+bg_color = Color(0.403929, 0.648388, 0.670395, 1)
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +13,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kadyo")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0.840921, 0.88952, 0.828237, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ryggr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

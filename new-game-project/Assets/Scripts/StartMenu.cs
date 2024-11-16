@@ -18,6 +18,7 @@ public partial class StartMenu : Node2D
 		GetNode<Godot.Button>("StartGame").Hide();
 		GetNode<Godot.Button>("SettingsButton").Hide();
 		GetNode<Godot.Label>("GameName").Hide();
+		GetNode<Sprite2D>("Bossbaby").Hide();
 		GetNode<LoadingScreen>("Loading").LoadScene("res://Assets/Overworld/world_pt_1.tscn");
 	}
 
