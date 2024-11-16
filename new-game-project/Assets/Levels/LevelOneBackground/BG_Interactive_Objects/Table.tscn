@@ -6,7 +6,7 @@
 size = Vector2(123, 12)
 
 [node name="Table" type="Node2D"]
-position = Vector2(1029, 597)
+position = Vector2(61, 7)
 scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
