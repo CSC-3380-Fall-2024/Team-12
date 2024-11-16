@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -10,8 +11,17 @@ public partial class Player : CharacterBody2D
 	public const float JUMP_VELOCITY = -800f;     // Jump velocity
 	public const float GRAVITY = 2000f;            // Gravity force
 	public const float JUMP_DELAY = 0.08f;          // Delay in seconds before jump happens
-	public const float DECELERATION = 600f;        // Deceleration factor
+	public const float DECELERATION = 1000f;        // Deceleration factor
 	public const float ACCELERATION = 800f;        // Acceleration factor
+
+	private float dashSpeed = 600f;
+	private float dashDuration = 0.2f;
+	private float dashCoolDown = 1f;
+
+	private Vector2 dashDirection = Vector2.Zero;
+	private bool isDashing = false;
+	private float dashTimeLeft = 0f;
+	private float dashCoolDownTime = 0f;
 
 
 	private ProgressBar health;
@@ -69,6 +79,18 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+
+		//dashing
+
+		if (isDashing)
+		{
+			PerformDash((float)delta);
+			return;
+		}
+		dashCoolDownTime = Mathf.Max(0f, dashCoolDownTime - (float)delta);
+		HandleDashInput();
+
+
 		//input handling
 		float horizontalInput = Input.GetAxis("move_left", "move_right");
 		float velocityY = Velocity.Y;
@@ -97,6 +119,8 @@ public partial class Player : CharacterBody2D
 			velocityY += GRAVITY * (float)delta;
 		}
 
+
+
 		Velocity = new Vector2(Velocity.X, velocityY);
 		MoveAndSlide();
 
@@ -118,6 +142,119 @@ public partial class Player : CharacterBody2D
 
 		}
 	}
+
+	private void HandleDashInput()
+	{
+		if (Input.IsActionJustPressed("dash") && dashCoolDownTime <= 0f)
+		{
+			Vector2 dir = GetInputDirection();
+			GD.Print(dir);
+			if (Input.IsActionPressed("move_left"))
+			{
+				GD.Print("LEFT PRESSED WHILE NOT DASHING STILL");
+			}
+
+			if (dir != Vector2.Zero)
+			{
+				GD.Print("DASHING", dir);
+				StartDash(dir);
+			}
+		}
+	}
+
+	// private void HandleDashInput()
+	// {
+
+	// 	if (Input.IsActionJustPressed("dash") && dashCoolDownTime <= 0f)
+	// 	{
+	// 		Vector2 dir = Vector2.Zero;
+	// 		if (Input.IsActionPressed("ui_left"))
+	// 		{
+	// 			GD.Print("DASHING");
+	// 			dir = new Vector2(-1, 0);
+	// 		}
+	// 		if (Input.IsActionPressed("ui_right"))
+	// 		{
+	// 			GD.Print("DASHING");
+	// 			dir = new Vector2(1, 0);
+	// 		}
+	// 		if (Input.IsActionPressed("ui_down"))
+	// 		{
+	// 			GD.Print("DASHING");
+	// 			dir = new Vector2(0, 1);
+	// 		}
+	// 		if (Input.IsActionPressed("ui_up"))
+	// 		{
+	// 			GD.Print("DASHING");
+	// 			dir = new Vector2(0, -1);
+	// 		}
+	// 		if (dir != Vector2.Zero)
+	// 		{
+	// 			StartDash(dir);
+	// 		}
+	// 	}
+	// }
+
+	private void StartDash(Vector2 dir)
+	{
+		isDashing = true;
+		dashTimeLeft = dashDuration;
+		dashCoolDownTime = dashCoolDown;
+
+		dashDirection = dir.Normalized();
+		Velocity = dashDirection * dashSpeed;
+		GD.Print("dashDirection: " + dashDirection);
+	}
+
+	private void PerformDash(float delta)
+	{
+		GD.Print("Performing Dash");
+		Velocity = dashDirection * dashSpeed;
+		dashTimeLeft -= delta;
+
+		if (dashTimeLeft <= 0f)
+		{
+			EndDash();
+		}
+		MoveAndSlide();
+	}
+
+	private void EndDash()
+	{
+		isDashing = false;
+		if (IsOnFloor())
+		{
+			Velocity = new Vector2(0, 0);
+		}
+		Velocity = dashDirection * dashSpeed * 0.75f;
+	}
+
+	private Vector2 GetInputDirection()
+	{
+		Vector2 dir = Vector2.Zero;
+		if (Input.IsActionPressed("move_left"))
+		{
+			dir.X -= 1;
+		}
+		if (Input.IsActionPressed("move_right"))
+		{
+			dir.X += 1;
+		}
+		if (Input.IsActionPressed("down"))
+		{
+			dir.Y += 1;
+		}
+		if (Input.IsActionPressed("up"))
+		{
+			dir.Y -= 1;
+		}
+		return dir.Normalized();
+	}
+
+
+
+
+
 	public void AreaEnteredHP(Node body)
 	{
 		if (body is Player)
