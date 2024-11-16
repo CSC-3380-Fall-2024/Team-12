@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bke18ajb6e6ve"]
+
+[ext_resource type="Texture2D" uid="uid://drjiegrf4hnn4" path="res://Assets/weapon/1cloak.png" id="1_c8ap5"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(-302, -199)
+scale = Vector2(2.51042, 2.59375)
+texture = ExtResource("1_c8ap5")

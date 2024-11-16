@@ -6,16 +6,22 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class Player : CharacterBody2D
 {
+
+
 	public const float Speed = 150f;
 	public const float JumpVelocity = -200f;
 
 	private ProgressBar health;
+
 	private int[] healtharray = new int[4];
 	
-	private bool interactable = false;
+	public bool interactable = false;
 	
-	private bool interactableCookie = false;
+	public bool interactableCookie = false;
 
+ private PackedScene armorPickup = (PackedScene)ResourceLoader.Load("res://armorPickup.tscn");
+
+  
 
      public override void _Ready()
      {
@@ -75,6 +81,16 @@ public partial class Player : CharacterBody2D
 			healtharray[1] = 1;
 			hparray();
 			interactable = false;
+			Node armorPickupInstance = armorPickup.Instantiate();
+			var gameNode = GetParent() as Node2D;
+			if (gameNode != null)
+    		{
+        		gameNode.AddChild(armorPickupInstance);
+        		armorPickupInstance.Name = "armorPickup"; 
+    		}
+           
+
+
 		}
 
 		if (interactableCookie && Input.IsActionJustPressed("food")){
@@ -82,7 +98,6 @@ public partial class Player : CharacterBody2D
 			GD.Print("your gay 9000000000");
 			hparray();
 			interactableCookie = false;
-			
 		}
 		
 	}

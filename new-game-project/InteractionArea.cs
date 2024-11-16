@@ -4,8 +4,7 @@ using System;
 public partial class InteractionArea : Area2D
 {
 	// Called when the node enters the scene tree for the first time
-
-
+	
 	public void inTheZone(Node body){
 		if (body is Player player)
 			player.AreaEntered(body);
