@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=3 uid="uid://dnmgc3a08ihsk"]
 
-[ext_resource type="Script" path="res://Charecter Sprites/mc_boy.gd" id="1_l6cqd"]
-[ext_resource type="Texture2D" uid="uid://cjjmhrrjvfthc" path="res://Charecter Sprites/Main-Charecter-Boy.png" id="2_mu2ay"]
+[ext_resource type="Script" path="res://Assets/Overworld/mc_boy.gd" id="1_l6cqd"]
+[ext_resource type="Texture2D" uid="uid://dullw31gq5nae" path="res://Main-Charecter-Boy.png" id="2_mu2ay"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fpra5"]
 radius = 16.0
@@ -505,6 +505,7 @@ states/idle/position = Vector2(342, 60)
 states/run/node = SubResource("AnimationNodeBlendTree_pevsw")
 states/run/position = Vector2(342, 163)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1i4nk"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_i5k3l"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_flwry")]
+graph_offset = Vector2(117.18, -16.8025)
 
 [node name="MC-boy" type="CharacterBody2D"]
 script = ExtResource("1_l6cqd")

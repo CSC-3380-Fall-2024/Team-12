@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cixwm7dtc78h6"]
+[gd_scene load_steps=12 format=4 uid="uid://cixwm7dtc78h6"]
 
 [ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/bg.tscn" id="1_i7u6x"]
 [ext_resource type="Texture2D" uid="uid://btn5h8rcbsf5p" path="res://Assets/Levels/LevelOneBackground/LevelOneTiles/Terrain (16x16).png" id="3_jkgtu"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://0qcglxoosdgj" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Table.tscn" id="4_qlwbc"]
 [ext_resource type="PackedScene" uid="uid://bpfag6oxiry3y" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Bed.tscn" id="5_w8wfl"]
 [ext_resource type="PackedScene" uid="uid://db7glncx6t5nm" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Shelf.tscn" id="6_rx3tl"]
-[ext_resource type="PackedScene" uid="uid://c8cqe8b01a4m2" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
+[ext_resource type="Script" path="res://Assets/Scripts/LevelOneExit.cs" id="8_vumf8"]
+[ext_resource type="PackedScene" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvclc"]
 texture = ExtResource("3_jkgtu")
@@ -164,6 +165,9 @@ texture = ExtResource("3_jkgtu")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tvclc")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_exqgu"]
+radius = 83.0241
+
 [node name="LevelOne" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_i7u6x")]
@@ -179,6 +183,20 @@ position = Vector2(880, 472)
 position = Vector2(195, 389)
 
 [node name="Shelf" parent="." instance=ExtResource("6_rx3tl")]
+
+position = Vector2(1304, 288)
+
+[node name="LevelOneEntrance" type="Area2D" parent="."]
+position = Vector2(826, 278)
+script = ExtResource("8_vumf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelOneEntrance"]
+position = Vector2(-646, 93)
+shape = SubResource("CircleShape2D_exqgu")
+
+[connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
+=======
 position = Vector2(1304, 296)
 
 [node name="Shelf2" parent="." instance=ExtResource("6_rx3tl")]

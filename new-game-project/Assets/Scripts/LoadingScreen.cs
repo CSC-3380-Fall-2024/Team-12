@@ -1,16 +1,18 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 public partial class LoadingScreen : Control
 {
 	private string pathToScene;
-	private Godot.ProgressBar loading; 
+	private ProgressBar loading; 
 	private bool loadingNow;
 	int count = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
-		loading = GetNode<Godot.ProgressBar>("LoadingBar");
+		loading = GetNode<ProgressBar>("LoadingBar");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
