@@ -165,8 +165,8 @@ texture = ExtResource("3_jkgtu")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tvclc")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_exqgu"]
-radius = 83.0241
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsfay"]
+radius = 71.0282
 
 [node name="LevelOne" type="Node2D"]
 
@@ -183,20 +183,6 @@ position = Vector2(880, 472)
 position = Vector2(195, 389)
 
 [node name="Shelf" parent="." instance=ExtResource("6_rx3tl")]
-
-position = Vector2(1304, 288)
-
-[node name="LevelOneEntrance" type="Area2D" parent="."]
-position = Vector2(826, 278)
-script = ExtResource("8_vumf8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelOneEntrance"]
-position = Vector2(-646, 93)
-shape = SubResource("CircleShape2D_exqgu")
-
-[connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
-=======
 position = Vector2(1304, 296)
 
 [node name="Shelf2" parent="." instance=ExtResource("6_rx3tl")]
@@ -258,7 +244,7 @@ position = Vector2(10901, 471)
 position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
-position = Vector2(192, 448)
+position = Vector2(11346, 242)
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 position = Vector2(1, -120)
@@ -266,3 +252,14 @@ limit_left = 0
 limit_top = 0
 limit_bottom = 645
 script = ExtResource("3_no0s2")
+
+[node name="LevelOneEntrance" type="Area2D" parent="."]
+position = Vector2(826, 278)
+script = ExtResource("8_vumf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelOneEntrance"]
+position = Vector2(11115, 116)
+shape = SubResource("CircleShape2D_dsfay")
+
+[connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
