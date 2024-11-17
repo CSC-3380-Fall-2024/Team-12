@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8cqe8b01a4m2"]
+[gd_scene load_steps=7 format=3 uid="uid://fy28ufu458l7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_lraqc"]
 [ext_resource type="Texture2D" uid="uid://buqmfhjldfhvc" path="res://icon.svg" id="2_tbfkb"]
-[ext_resource type="PackedScene" uid="uid://c0lt002xyildw" path="res://Assets/Nodes/health_bar.tscn" id="3_fpv2e"]
+[ext_resource type="PackedScene" uid="uid://bh3uhccbq60n7" path="res://Assets/Nodes/health_bar.tscn" id="3_fpv2e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dq3f"]
 atlas = ExtResource("2_tbfkb")
@@ -23,6 +23,7 @@ animations = [{
 size = Vector2(114, 116)
 
 [node name="MainCharacter" type="CharacterBody2D"]
+collision_layer = 6
 script = ExtResource("1_lraqc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

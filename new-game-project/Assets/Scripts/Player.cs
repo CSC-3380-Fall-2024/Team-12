@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 
 public partial class Player : CharacterBody2D
 {
-	public const float Speed = 250f;              // Max speed of the player
+	public float Speed = 250f;              // Max speed of the player
 	public const float JUMP_VELOCITY = -800f;     // Jump velocity
 	public const float GRAVITY = 2000f;            // Gravity force
 	public const float JUMP_DELAY = 0.08f;          // Delay in seconds before jump happens
@@ -25,11 +25,13 @@ public partial class Player : CharacterBody2D
 
 
 	private ProgressBar health;
+
 	private int[] healtharray = new int[4];
 
 	private bool interactable = false;
 
 	private bool interactableCookie = false;
+	private bool interactablePotion = false;
 
 
 	private Timer jumpTimer;
@@ -37,6 +39,10 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D sprite;
 
+
+ private PackedScene armorPickup = (PackedScene)ResourceLoader.Load("res://armorPickup.tscn");
+private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cookie_remove.tscn");
+  private PackedScene potionPickup = (PackedScene)ResourceLoader.Load("res://potionramove.tscn");
 
 	public override void _Ready()
 	{
@@ -63,21 +69,17 @@ public partial class Player : CharacterBody2D
 		if (healtharray[1] == 0)
 		{
 			health.hp = 5;
-		}
-		else if (healtharray[1] == 1)
-		{
-			health.hp = 10;
+		}else if ( healtharray[1] == 1){
+		health.hp = 10;
 
-		}
-		else if (healtharray[1] == 2)
-		{
-			health.hp = 15;
-		}
+	 }else if (healtharray [1] == 2){
+		health.hp = 15;
+	 }
 
-		health.Value = health.hp;
-	}
-
-	public override void _PhysicsProcess(double delta)
+	 health.Value = health.hp;
+	 }
+	 
+    public override void _PhysicsProcess(double delta)
 	{
 
 		//dashing
@@ -126,22 +128,80 @@ public partial class Player : CharacterBody2D
 
 		if (interactable && Input.IsActionJustPressed("interact"))
 		{
-			interactableCookie = false;
 			GD.Print("Interacting in zone. Updating health...");
 			healtharray[1] = 1;
 			hparray();
 			interactable = false;
+			Node armorPickupInstance = armorPickup.Instantiate();
+			var gameNode = GetParent() as Node2D;
+        		gameNode.AddChild(armorPickupInstance);
+        		armorPickupInstance.Name = "armorPickup"; 
 		}
 
-		if (interactableCookie && Input.IsActionJustPressed("food"))
-		{
-			interactable = false;
+		if (interactableCookie && Input.IsActionJustPressed("food")){
 			GD.Print("your 9000000000");
 			hparray();
 			interactableCookie = false;
+			Node cookiepiickup = cookiePickup.Instantiate();
+			var gameNode = GetParent() as Node2D;
+        		gameNode.AddChild(cookiepiickup);
+        		cookiepiickup.Name = "foodPickup"; 
+		}
+		if (Input.IsActionJustPressed("takedmg")){
+			health.Value -= 1;
+		}
+		if (interactablePotion && Input.IsActionJustPressed("potion")){
+			Speed = 4000f;
+			interactablePotion = false;
+			Node potionpick = potionPickup.Instantiate();
+				var gameNode = GetParent() as Node2D;
+        		gameNode.AddChild(potionpick);
+        		potionpick.Name = "potionPickup"; 
 
 		}
+		if (health.Value == 0){
+			GetTree().ChangeSceneToFile("res://Assets/Nodes/settings_menu.tscn");
+		}
+
 	}
+		public void AreaEnteredHP(Node body)
+			{
+				 GD.Print($"body_entered triggered by: {body.Name}");
+		if (body is Player)
+		{
+			interactableCookie = true;
+			GD.Print("your in the hp zone");
+		}
+	}
+		public void AreaEntered(Node body){
+			if (body is Player){
+				interactable = true;
+				interactableCookie = true;
+				interactablePotion = true; 
+				GD.Print("Player entered a general area");
+			
+			}
+			
+		}
+
+		public void AreaExited(Node body){
+			if (body is Player){
+				
+			interactable = false;
+			interactableCookie = false;
+			}
+		}
+		
+	public void AreaExitedHP(Node body)
+	{
+		if (body is Player)
+		{
+			interactableCookie = false;
+			GD.Print("left the hp zone");
+		}
+	}
+
+
 
 	private void HandleDashInput()
 	{
@@ -162,38 +222,6 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	// private void HandleDashInput()
-	// {
-
-	// 	if (Input.IsActionJustPressed("dash") && dashCoolDownTime <= 0f)
-	// 	{
-	// 		Vector2 dir = Vector2.Zero;
-	// 		if (Input.IsActionPressed("ui_left"))
-	// 		{
-	// 			GD.Print("DASHING");
-	// 			dir = new Vector2(-1, 0);
-	// 		}
-	// 		if (Input.IsActionPressed("ui_right"))
-	// 		{
-	// 			GD.Print("DASHING");
-	// 			dir = new Vector2(1, 0);
-	// 		}
-	// 		if (Input.IsActionPressed("ui_down"))
-	// 		{
-	// 			GD.Print("DASHING");
-	// 			dir = new Vector2(0, 1);
-	// 		}
-	// 		if (Input.IsActionPressed("ui_up"))
-	// 		{
-	// 			GD.Print("DASHING");
-	// 			dir = new Vector2(0, -1);
-	// 		}
-	// 		if (dir != Vector2.Zero)
-	// 		{
-	// 			StartDash(dir);
-	// 		}
-	// 	}
-	// }
 
 	private void StartDash(Vector2 dir)
 	{
@@ -255,46 +283,11 @@ public partial class Player : CharacterBody2D
 
 
 
-	public void AreaEnteredHP(Node body)
-	{
-		if (body is Player)
-		{
-			interactableCookie = true;
 
-			GD.Print("your 1");
 
-		}
-	}
 
-	public void AreaExitedHP(Node body)
-	{
-		if (body is Player)
-		{
-			interactableCookie = false;
-			GD.Print("your 3");
-		}
-	}
 
-	public void AreaEntered(Node body)
-	{
-		if (body is Player)
-		{
 
-			interactable = true;
-			GD.Print("Player entered a general area");
-
-		}
-
-	}
-	public void AreaExited(Node body)
-	{
-		if (body is Player)
-		{
-
-			interactable = false;
-			GD.Print("Player entered a general area");
-		}
-	}
 
 
 
@@ -316,3 +309,5 @@ public partial class Player : CharacterBody2D
 		}
 	}
 }
+
+

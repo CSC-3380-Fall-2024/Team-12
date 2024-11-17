@@ -1,13 +1,17 @@
-[gd_scene load_steps=12 format=4 uid="uid://cixwm7dtc78h6"]
+[gd_scene load_steps=16 format=4 uid="uid://pid1nvbu2bbi"]
 
 [ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/bg.tscn" id="1_i7u6x"]
+[ext_resource type="Script" path="res://Assets/Levels/Game.cs" id="1_o0d4d"]
 [ext_resource type="Texture2D" uid="uid://btn5h8rcbsf5p" path="res://Assets/Levels/LevelOneBackground/LevelOneTiles/Terrain (16x16).png" id="3_jkgtu"]
 [ext_resource type="Script" path="res://Assets/Scripts/PlayerCamera.cs" id="3_no0s2"]
 [ext_resource type="PackedScene" uid="uid://0qcglxoosdgj" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Table.tscn" id="4_qlwbc"]
 [ext_resource type="PackedScene" uid="uid://bpfag6oxiry3y" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Bed.tscn" id="5_w8wfl"]
 [ext_resource type="PackedScene" uid="uid://db7glncx6t5nm" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Shelf.tscn" id="6_rx3tl"]
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneExit.cs" id="8_vumf8"]
-[ext_resource type="PackedScene" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
+[ext_resource type="PackedScene" uid="uid://ci75vtde4y27b" path="res://interaction_area_cookie.tscn" id="9_4ka2h"]
+[ext_resource type="PackedScene" uid="uid://c3ij78lnm7d8j" path="res://interaction_area.tscn" id="10_ma6qi"]
+[ext_resource type="PackedScene" uid="uid://fy28ufu458l7" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
+[ext_resource type="PackedScene" uid="uid://swqabeeiets2" path="res://interaction_potion.tscn" id="12_moxr0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvclc"]
 texture = ExtResource("3_jkgtu")
@@ -169,6 +173,7 @@ sources/0 = SubResource("TileSetAtlasSource_tvclc")
 radius = 71.0282
 
 [node name="LevelOne" type="Node2D"]
+script = ExtResource("1_o0d4d")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_i7u6x")]
 
@@ -248,6 +253,7 @@ position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
 position = Vector2(192, 448)
+collision_layer = 255
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
 position = Vector2(1, -120)
@@ -264,5 +270,16 @@ script = ExtResource("8_vumf8")
 position = Vector2(11115, 116)
 shape = SubResource("CircleShape2D_dsfay")
 
+[node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
+position = Vector2(831, 317)
+collision_mask = 255
+
+[node name="InteractionArea" parent="." instance=ExtResource("10_ma6qi")]
+position = Vector2(1164, 463)
+
+[node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
+position = Vector2(505, 475)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
