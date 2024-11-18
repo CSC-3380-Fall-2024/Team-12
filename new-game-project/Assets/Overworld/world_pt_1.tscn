@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://bo77etf1q33dx"]
+[gd_scene load_steps=13 format=4 uid="uid://xi68dqayttfh"]
 
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
 [ext_resource type="Texture2D" uid="uid://cbx2cwlpfd35t" path="res://TX Tileset Grass.png" id="2_v6e4b"]
 [ext_resource type="Texture2D" uid="uid://bio1l67a36slf" path="res://City Prop Tileset update 2.png" id="4_pc6f6"]
 [ext_resource type="Texture2D" uid="uid://dwlleqpff0v8y" path="res://Building.png" id="5_mv8ib"]
-[ext_resource type="PackedScene" uid="uid://dnmgc3a08ihsk" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
+[ext_resource type="PackedScene" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneEntrance.cs" id="6_63vfm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]

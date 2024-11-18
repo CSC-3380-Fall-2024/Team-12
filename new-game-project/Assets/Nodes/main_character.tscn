@@ -1,18 +1,53 @@
-[gd_scene load_steps=7 format=3 uid="uid://fy28ufu458l7"]
+[gd_scene load_steps=12 format=3 uid="uid://fy28ufu458l7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_lraqc"]
-[ext_resource type="Texture2D" uid="uid://buqmfhjldfhvc" path="res://icon.svg" id="2_tbfkb"]
+[ext_resource type="Texture2D" uid="uid://cp1b4f7j7ksfk" path="res://Assets/Sprite/baby_idle2.png" id="2_urd1s"]
 [ext_resource type="PackedScene" uid="uid://bh3uhccbq60n7" path="res://Assets/Nodes/health_bar.tscn" id="3_fpv2e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2dq3f"]
-atlas = ExtResource("2_tbfkb")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5beh5"]
+atlas = ExtResource("2_urd1s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t5qy"]
+atlas = ExtResource("2_urd1s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch86t"]
+atlas = ExtResource("2_urd1s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4ijs"]
+atlas = ExtResource("2_urd1s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ajlk"]
+atlas = ExtResource("2_urd1s")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0bln"]
+atlas = ExtResource("2_urd1s")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a05ml"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2dq3f")
+"texture": SubResource("AtlasTexture_5beh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t5qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch86t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4ijs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ajlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0bln")
 }],
 "loop": true,
 "name": &"default",
@@ -28,7 +63,10 @@ script = ExtResource("1_lraqc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -65)
+scale = Vector2(3.875, 3.875)
 sprite_frames = SubResource("SpriteFrames_a05ml")
+autoplay = "default"
+frame_progress = 0.623221
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -66)

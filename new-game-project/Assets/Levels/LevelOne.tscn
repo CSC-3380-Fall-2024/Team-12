@@ -275,10 +275,10 @@ position = Vector2(831, 317)
 collision_mask = 255
 
 [node name="InteractionArea" parent="." instance=ExtResource("10_ma6qi")]
-position = Vector2(1164, 463)
+position = Vector2(480, 468)
 
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
-position = Vector2(505, 475)
+position = Vector2(1059, 466)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]

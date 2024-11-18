@@ -160,7 +160,7 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 
 		}
 		if (health.Value == 0){
-			GetTree().ChangeSceneToFile("res://Assets/Nodes/settings_menu.tscn");
+			GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn");
 		}
 
 	}
