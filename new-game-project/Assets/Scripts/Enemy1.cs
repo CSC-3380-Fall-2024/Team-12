@@ -3,6 +3,7 @@ using System;
 
 public partial class Enemy1 : CharacterBody2D
 {
+	//hello
 
 	public float detectionRadius = 600f;
 	public float CLOSERANGE = 200f;
