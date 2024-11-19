@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public partial class WorldOneTestEntrance : Area2D
+public partial class LevelOneEntrance : Area2D
 {
-
 	private bool entered = false;
+	private bool toTopDown = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 
@@ -13,15 +13,16 @@ public partial class WorldOneTestEntrance : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		if (entered == true) {
-			GD.Print("Press any button to enter scene");
 			if (Input.IsAnythingPressed()) {
-				GetTree().ChangeSceneToFile("res://Assets/Nodes/WorldTwoTest.tscn");
+				GetTree().ChangeSceneToFile("res://Assets/Levels/LevelOne.tscn");
 			}
 		}
 	}
 
-	public void _on_area_2d_body_entered(Node2D body) {
-		entered = true;
+	public void _on_area_2d_body_entered(CharacterBody2D body) {
+		if (body == GetNode<CharacterBody2D>("/root/world/TileMap/MC-boy")) {
+			entered = true;
+		}
 	}
 
 	public void _on_area_2d_body_exited(Node2D body) {

@@ -18,7 +18,8 @@ public partial class StartMenu : Node2D
 		GetNode<Godot.Button>("StartGame").Hide();
 		GetNode<Godot.Button>("SettingsButton").Hide();
 		GetNode<Godot.Label>("GameName").Hide();
-		GetNode<LoadingScreen>("Loading").LoadScene("res://Assets/Nodes/WorldOneTest.tscn");
+		GetNode<Sprite2D>("Bossbaby").Hide();
+		GetNode<LoadingScreen>("Loading").LoadScene("res://Assets/Overworld/world_pt_1.tscn");
 	}
 
 	public void _on_settings_button_pressed() {

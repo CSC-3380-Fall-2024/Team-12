@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c0lt002xyildw"]
+[gd_scene load_steps=2 format=3 uid="uid://bh3uhccbq60n7"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/ProgressBar.cs" id="1_h3rok"]
 
 [node name="HealthBar" type="Control"]
 layout_mode = 3
@@ -6,9 +8,11 @@ anchors_preset = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_left = -100.0
-offset_top = -14.0
-offset_right = 101.0
-offset_bottom = 13.0
+offset_left = -103.0
+offset_top = -15.0
+offset_right = 98.0
+offset_bottom = 12.0
 max_value = 5.0
 value = 2.0
+allow_greater = true
+script = ExtResource("1_h3rok")
