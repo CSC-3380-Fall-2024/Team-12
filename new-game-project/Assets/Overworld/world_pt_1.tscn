@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=14 format=4 uid="uid://xi68dqayttfh"]
 
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
 [ext_resource type="Texture2D" uid="uid://cbx2cwlpfd35t" path="res://TX Tileset Grass.png" id="2_v6e4b"]
 [ext_resource type="Texture2D" uid="uid://bio1l67a36slf" path="res://City Prop Tileset update 2.png" id="4_pc6f6"]
 [ext_resource type="Texture2D" uid="uid://dwlleqpff0v8y" path="res://Building.png" id="5_mv8ib"]
-[ext_resource type="PackedScene" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
+[ext_resource type="PackedScene" uid="uid://dnmgc3a08ihsk" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneEntrance.cs" id="6_63vfm"]
+[ext_resource type="PackedScene" uid="uid://cdit7iaahsp5m" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]
 texture = ExtResource("2_v6e4b")
@@ -2620,12 +2621,15 @@ position = Vector2(1, 0)
 [node name="Camera2D" type="Camera2D" parent="TileMap/MC-boy"]
 
 [node name="LevelOneEntrance" type="Area2D" parent="."]
-position = Vector2(826, 278)
+position = Vector2(830, 286)
 script = ExtResource("6_63vfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelOneEntrance"]
 position = Vector2(-771, -542)
 shape = SubResource("CircleShape2D_m6lx1")
+
+[node name="Node2D" parent="." instance=ExtResource("7_5thep")]
+position = Vector2(-823, -257)
 
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
