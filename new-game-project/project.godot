@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Baby Game"
-run/main_scene="res://Assets/Levels/game.tscn"
+run/main_scene="res://Assets/Nodes/start_menu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 InteractionManager="*res://Assets/interaction/InteractionManager.tscn"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="viewport"
 
 [dotnet]
 

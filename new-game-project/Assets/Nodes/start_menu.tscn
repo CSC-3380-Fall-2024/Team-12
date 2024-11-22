@@ -17,10 +17,11 @@ bg_color = Color(0.447059, 0.615686, 0.788235, 1)
 bg_color = Color(0.447059, 0.615686, 0.788235, 1)
 
 [node name="StartMenu" type="Node2D"]
+scale = Vector2(1, 0.99694)
 script = ExtResource("1_q432k")
 
 [node name="Bossbaby" type="Sprite2D" parent="."]
-position = Vector2(563, 295)
+position = Vector2(576, 321)
 scale = Vector2(1.81094, 1)
 texture = ExtResource("2_41u0b")
 
