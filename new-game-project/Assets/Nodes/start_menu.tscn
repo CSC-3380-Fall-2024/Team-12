@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://1jucv388eiop"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/StartMenu.cs" id="1_q432k"]
-[ext_resource type="PackedScene" path="res://Assets/Nodes/loading.tscn" id="2_36uyo"]
+[ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="2_36uyo"]
 [ext_resource type="Texture2D" uid="uid://dog7g4yts1ybp" path="res://bossbaby.png" id="2_41u0b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1e11"]
