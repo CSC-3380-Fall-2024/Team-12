@@ -12,9 +12,17 @@ public partial class NpcArea : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
 		if (entered == true) {
-			if (Input.IsAnythingPressed()) {
-				GetTree().ChangeSceneToFile("res://Assets/Levels/LevelOne.tscn");
-			}
+			GetNode<Control>("NPC/Dialog").Show();
 		}
+	}
+	public void _on_area_2d_body_entered(CharacterBody2D body) {
+		if (body == GetNode<CharacterBody2D>("/root/world/TileMap/MC-boy")) {
+			entered = true;
+			GD.Print("IN");
+		}
+	}
+
+	public void _on_area_2d_body_exited(Node2D body) {
+		entered = false;
 	}
 }
