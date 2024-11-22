@@ -2628,8 +2628,9 @@ script = ExtResource("6_63vfm")
 position = Vector2(-771, -542)
 shape = SubResource("CircleShape2D_m6lx1")
 
-[node name="Node2D" parent="." instance=ExtResource("7_5thep")]
-position = Vector2(-823, -257)
+[node name="NPC" parent="." instance=ExtResource("7_5thep")]
+position = Vector2(-194, -40)
+scale = Vector2(0.781229, 0.848928)
 
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
