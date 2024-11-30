@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf07pwmadxe1v"]
+
+[ext_resource type="PackedScene" uid="uid://rqutm8n2ch4x" path="res://Assets/Levels/BossLevel/BossLevelBackground/BossLevelBG.tscn" id="1_nlm8u"]
+
+[node name="BossLevel" type="Node2D"]
+
+[node name="BossLevelBg" parent="." instance=ExtResource("1_nlm8u")]
