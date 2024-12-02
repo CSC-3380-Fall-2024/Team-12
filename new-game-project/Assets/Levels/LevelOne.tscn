@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ij78lnm7d8j" path="res://interaction_area.tscn" id="10_ma6qi"]
 [ext_resource type="PackedScene" uid="uid://fy28ufu458l7" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
 [ext_resource type="PackedScene" uid="uid://swqabeeiets2" path="res://interaction_potion.tscn" id="12_moxr0"]
-[ext_resource type="PackedScene" uid="uid://b671re5asb47p" path="res://Assets/Nodes/Enemy1.tscn" id="14_molyp"]
+[ext_resource type="PackedScene" uid="uid://d2v4otnk07idh" path="res://Assets/Sounds/LevelOneMusic.tscn" id="14_8gg85"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvclc"]
 texture = ExtResource("3_jkgtu")
@@ -172,7 +172,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_tvclc")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dsfay"]
-radius = 110.041
+radius = 71.0282
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_o0d4d")
@@ -279,7 +279,7 @@ position = Vector2(826, 278)
 script = ExtResource("8_vumf8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelOneEntrance"]
-position = Vector2(12473, -143)
+position = Vector2(12470, -142)
 shape = SubResource("CircleShape2D_dsfay")
 
 [node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
@@ -292,9 +292,7 @@ position = Vector2(480, 468)
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
 position = Vector2(1059, 466)
 
-[node name="Node2D" parent="." instance=ExtResource("14_molyp")]
-position = Vector2(1316, 528)
-scale = Vector2(0.900123, 1.01693)
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("14_8gg85")]
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=16 format=4 uid="uid://xi68dqayttfh"]
 
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
 [ext_resource type="Texture2D" uid="uid://cbx2cwlpfd35t" path="res://TX Tileset Grass.png" id="2_v6e4b"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dwlleqpff0v8y" path="res://Building.png" id="5_mv8ib"]
 [ext_resource type="PackedScene" uid="uid://dnmgc3a08ihsk" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneEntrance.cs" id="6_63vfm"]
-[ext_resource type="PackedScene" uid="uid://cdit7iaahsp5m" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
+[ext_resource type="PackedScene" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
+[ext_resource type="PackedScene" uid="uid://bomb86kfqp6c2" path="res://Assets/Sounds/TopDownAmbient.tscn" id="8_cyarh"]
+[ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]
 texture = ExtResource("2_v6e4b")
@@ -2631,6 +2633,11 @@ shape = SubResource("CircleShape2D_m6lx1")
 [node name="NPC" parent="." instance=ExtResource("7_5thep")]
 position = Vector2(-194, -40)
 scale = Vector2(0.781229, 0.848928)
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("8_cyarh")]
+
+[node name="AudioStreamPlayer2" parent="." instance=ExtResource("9_a52p8")]
+autoplay = true
 
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]

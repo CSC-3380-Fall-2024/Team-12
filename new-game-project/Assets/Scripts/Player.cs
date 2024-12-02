@@ -38,6 +38,7 @@ public partial class Player : CharacterBody2D
 	private bool jumpRequested = false;
 
 	private AnimatedSprite2D sprite;
+	private AudioStreamPlayer Jump_SFX;
 
 
  private PackedScene armorPickup = (PackedScene)ResourceLoader.Load("res://armorPickup.tscn");
@@ -57,6 +58,7 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
+		Jump_SFX = GetNode<AudioStreamPlayer>("Jump_SFX");
 
 		health = GetNode<ProgressBar>("HealthBar/ProgressBar");
 		healtharray[1] = 0;
@@ -112,6 +114,7 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 		if (Input.IsActionJustPressed("jump") && jumpTimer.IsStopped() && IsOnFloor())
 		{
 			jumpRequested = true;
+			Jump_SFX.Play();
 			jumpTimer.Start();
 		}
 
