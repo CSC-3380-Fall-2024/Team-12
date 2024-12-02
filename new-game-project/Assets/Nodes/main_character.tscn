@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://fy28ufu458l7"]
+[gd_scene load_steps=13 format=3 uid="uid://fy28ufu458l7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_lraqc"]
 [ext_resource type="Texture2D" uid="uid://cp1b4f7j7ksfk" path="res://Assets/Sprite/baby_idle2.png" id="2_urd1s"]
 [ext_resource type="PackedScene" uid="uid://bh3uhccbq60n7" path="res://Assets/Nodes/health_bar.tscn" id="3_fpv2e"]
+[ext_resource type="AudioStream" uid="uid://c20k88mksducw" path="res://Assets/Sounds/Alt_Jump2.mp3" id="4_sw3pk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5beh5"]
 atlas = ExtResource("2_urd1s")
@@ -77,3 +78,7 @@ offset_left = 1.0
 offset_top = -192.0
 offset_right = 1.0
 offset_bottom = -192.0
+
+[node name="Jump_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sw3pk")
+volume_db = -12.0

@@ -1,12 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dseomw7ncy04i"]
+[gd_scene load_steps=3 format=3 uid="uid://dseomw7ncy04i"]
 
 [ext_resource type="Texture2D" uid="uid://bkwxvdhsom8bl" path="res://Assets/Levels/LevelOneBackground/LargeFloor.png" id="1_sfg8q"]
-[ext_resource type="Script" path="res://Assets/Scripts/BgLoader.cs" id="1_vlk2l"]
 [ext_resource type="Texture2D" uid="uid://cxkj5jnadoyml" path="res://Assets/Levels/LevelOneBackground/Wall.png" id="2_4flmc"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" node_paths=PackedStringArray("Layer")]
-script = ExtResource("1_vlk2l")
-Layer = NodePath("ParallaxLayer/Sprite2D2")
+[node name="ParallaxBackground" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(998, 0)
