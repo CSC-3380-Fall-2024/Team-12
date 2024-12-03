@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwlleqpff0v8y" path="res://Building.png" id="5_mv8ib"]
 [ext_resource type="PackedScene" uid="uid://dnmgc3a08ihsk" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneEntrance.cs" id="6_63vfm"]
-[ext_resource type="PackedScene" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
+[ext_resource type="PackedScene" uid="uid://cdit7iaahsp5m" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
 [ext_resource type="PackedScene" uid="uid://bomb86kfqp6c2" path="res://Assets/Sounds/TopDownAmbient.tscn" id="8_cyarh"]
 [ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
 
