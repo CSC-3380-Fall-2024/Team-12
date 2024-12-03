@@ -8,17 +8,20 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -374.0
+offset_bottom = -391.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qdj08")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 texture = ExtResource("1_fsm8g")
 
 [node name="Text" type="RichTextLabel" parent="NinePatchRect"]
@@ -27,5 +30,4 @@ offset_left = 65.0
 offset_top = 57.0
 offset_right = 1114.0
 offset_bottom = 585.0
-theme_override_font_sizes/normal_font_size = 41
-text = "(Press any key to advance) Text:"
+theme_override_font_sizes/normal_font_size = 20

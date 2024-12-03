@@ -17,13 +17,17 @@ texture = ExtResource("1_sqikg")
 [node name="NPCArea" type="Area2D" parent="NPC"]
 script = ExtResource("2_ymq5g")
 
+[node name="Dialog" parent="NPC/NPCArea" instance=ExtResource("3_yx4k3")]
+visible = false
+offset_left = -253.305
+offset_top = 73.1429
+offset_right = -129.305
+offset_bottom = 73.1429
+scale = Vector2(1.16827, 0.994963)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/NPCArea"]
 position = Vector2(2.69489, 8.43953)
 shape = SubResource("CircleShape2D_1ko5r")
 
-[node name="Dialog" parent="NPC" instance=ExtResource("3_yx4k3")]
-offset_left = -648.085
-offset_top = -488.088
-offset_right = -170.085
-offset_bottom = -229.088
-scale = Vector2(1.16827, 0.994963)
+[connection signal="body_entered" from="NPC/NPCArea" to="NPC/NPCArea" method="_on_body_entered"]
+[connection signal="body_exited" from="NPC/NPCArea" to="NPC/NPCArea" method="_on_body_exited"]
