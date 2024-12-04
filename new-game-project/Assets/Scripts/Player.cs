@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 public partial class Player : CharacterBody2D
 {
@@ -44,10 +45,18 @@ public partial class Player : CharacterBody2D
  private PackedScene armorPickup = (PackedScene)ResourceLoader.Load("res://armorPickup.tscn");
 private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cookie_remove.tscn");
   private PackedScene potionPickup = (PackedScene)ResourceLoader.Load("res://potionramove.tscn");
-
+private AnimatedSprite2D hit;
+private AnimatedSprite2D defmove;
+private AnimatedSprite2D jumpAnimation;
+ private Timer animationtime;
 	public override void _Ready()
 	{
-		//delay timer
+
+		animationtime = new Timer();
+        animationtime .WaitTime = 0.5f; 
+        animationtime .OneShot = true;
+		AddChild(animationtime);
+		
 		jumpTimer = new Timer
 		{
 			WaitTime = JUMP_DELAY,
@@ -63,7 +72,11 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 		health = GetNode<ProgressBar>("HealthBar/ProgressBar");
 		healtharray[1] = 0;
 		hparray();
-
+		 hit = GetNode<AnimatedSprite2D>("hit");
+		 hit.Visible = false;
+		 defmove = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		defmove.Visible = true;
+		jumpAnimation =  GetNode<AnimatedSprite2D>("jump");
 	}
 
 	public void hparray()
@@ -116,15 +129,69 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 			jumpRequested = true;
 			Jump_SFX.Play();
 			jumpTimer.Start();
+
 		}
 
+
+		
+		int i =0;
+			if(!IsOnFloor()){
+			jumpAnimation.Visible =true;
+			if (horizontalInput != 0)
+		{
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
+
+			jumpAnimation.FlipH = horizontalInput < 0;
+		}
+		else
+		{
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, 0, DECELERATION * (float)delta), velocityY);
+		}
+			defmove.Visible = false;
+			i=0;
+			}
+			if(IsOnFloor()){
+			jumpAnimation.Visible =false;
+			defmove.Visible=false;
+			if (i == 0){
+				defmove.Visible = true;
+				i++;
+			}
+			if(Input.IsActionJustPressed("hit")){
+				defmove.Visible = false;
+				i++;
+			}
+			
+			}
 
 		if (!jumpRequested)
 		{
 			velocityY += GRAVITY * (float)delta;
 		}
 
+if (Input.IsActionJustPressed("hit") && IsOnFloor())
+		{
+			hit.Visible = true;
+			i = 2;
+			defmove.Visible = false;
+			
+			animationtime.Start();
+			if (horizontalInput != 0)
+		{
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
 
+			hit.FlipH = horizontalInput < 0;
+		}
+		else
+		{
+			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, 0, DECELERATION * (float)delta), velocityY);
+		}
+		}
+		if (animationtime.TimeLeft <= 0 && hit.Visible)
+        {
+            hit.Visible = false; 
+			defmove.Visible=true;
+        }
 
 		Velocity = new Vector2(Velocity.X, velocityY);
 		MoveAndSlide();
@@ -167,6 +234,10 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 		}
 
 	}
+	    private void OnTimeout()
+    {
+        hit.Visible = false; 
+    }
 		public void AreaEnteredHP(Node body)
 			{
 				 GD.Print($"body_entered triggered by: {body.Name}");
@@ -293,7 +364,6 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 
 
 
-
 	// if (Input.IsActionJustPressed("attack")){
 	// 	Attack();
 	// }
@@ -309,6 +379,7 @@ private PackedScene cookiePickup = (PackedScene)ResourceLoader.Load("res://cooki
 		{
 			Velocity = new Vector2(Velocity.X, JUMP_VELOCITY);
 			jumpRequested = false;
+			
 		}
 	}
 }
