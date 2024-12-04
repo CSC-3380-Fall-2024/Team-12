@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=19 format=4 uid="uid://xi68dqayttfh"]
 
 [ext_resource type="Script" path="res://Assets/Overworld/WorldPt1.cs" id="1_h0dik"]
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bomb86kfqp6c2" path="res://Assets/Sounds/TopDownAmbient.tscn" id="8_cyarh"]
 [ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
 [ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="12_36wtn"]
+[ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="12_t7dee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]
 texture = ExtResource("2_v6e4b")
@@ -2641,8 +2642,8 @@ position = Vector2(-771, -542)
 shape = SubResource("CircleShape2D_m6lx1")
 
 [node name="NPC" parent="." instance=ExtResource("7_5thep")]
-position = Vector2(-194, -40)
-scale = Vector2(0.781229, 0.848928)
+position = Vector2(-180, -113)
+scale = Vector2(0.781229, 0.769469)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_cyarh")]
 
@@ -2650,6 +2651,13 @@ scale = Vector2(0.781229, 0.848928)
 autoplay = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Loading" parent="CanvasLayer" instance=ExtResource("12_t7dee")]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("12_36wtn")]
 visible = false
