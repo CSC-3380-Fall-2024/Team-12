@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=18 format=4 uid="uid://xi68dqayttfh"]
 
+[ext_resource type="Script" path="res://Assets/Overworld/WorldPt1.cs" id="1_h0dik"]
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
 [ext_resource type="Texture2D" uid="uid://cbx2cwlpfd35t" path="res://TX Tileset Grass.png" id="2_v6e4b"]
 [ext_resource type="Texture2D" uid="uid://bio1l67a36slf" path="res://City Prop Tileset update 2.png" id="4_pc6f6"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdit7iaahsp5m" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
 [ext_resource type="PackedScene" uid="uid://bomb86kfqp6c2" path="res://Assets/Sounds/TopDownAmbient.tscn" id="8_cyarh"]
 [ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
+[ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="12_36wtn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]
 texture = ExtResource("2_v6e4b")
@@ -2598,6 +2600,7 @@ sources/3 = SubResource("TileSetAtlasSource_h8stt")
 radius = 35.0571
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_h0dik")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ocjq0")
@@ -2622,6 +2625,13 @@ position = Vector2(1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap/MC-boy"]
 
+[node name="Button" type="Button" parent="TileMap/MC-boy/Camera2D"]
+offset_left = 444.0
+offset_top = -317.0
+offset_right = 572.0
+offset_bottom = -260.0
+text = "Settings"
+
 [node name="LevelOneEntrance" type="Area2D" parent="."]
 position = Vector2(830, 286)
 script = ExtResource("6_63vfm")
@@ -2639,5 +2649,13 @@ scale = Vector2(0.781229, 0.848928)
 [node name="AudioStreamPlayer2" parent="." instance=ExtResource("9_a52p8")]
 autoplay = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("12_36wtn")]
+visible = false
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="TileMap/MC-boy/Camera2D/Button" to="." method="_on_button_pressed_overworldsettings"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]

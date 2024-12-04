@@ -23,6 +23,7 @@ public partial class StartMenu : Node2D
 	}
 
 	public void _on_settings_button_pressed() {
-		GetTree().ChangeSceneToFile("res://Assets/Nodes/settings_menu.tscn");
+		// GetTree().ChangeSceneToFile("res://Assets/Nodes/settings_menu.tscn");
+		GetNode<SettingsMenu>("/root/StartMenu/CanvasLayer/SettingsMenu").Show();
 	}
 }
