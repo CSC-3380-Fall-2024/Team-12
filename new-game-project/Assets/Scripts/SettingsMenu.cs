@@ -43,7 +43,7 @@ public partial class SettingsMenu : Control
 	}
 
 	public void _on_exit_settings_pressed() {
-		GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn"); //Change to change back to whatever scene it came from
+		Hide(); //Hide the settings menu
 	}
 
 	public void _on_change_resolution_item_selected(int index) {
