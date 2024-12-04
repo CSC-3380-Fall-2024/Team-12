@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://bf07pwmadxe1v"]
+[gd_scene load_steps=8 format=4 uid="uid://bf07pwmadxe1v"]
 
 [ext_resource type="PackedScene" uid="uid://rqutm8n2ch4x" path="res://Assets/Levels/BossLevel/BossLevelBackground/BossLevelBG.tscn" id="1_nlm8u"]
 [ext_resource type="Texture2D" uid="uid://btn5h8rcbsf5p" path="res://Assets/Levels/LevelOneBackground/LevelOneTiles/Terrain (16x16).png" id="2_wvmv8"]
 [ext_resource type="PackedScene" uid="uid://fy28ufu458l7" path="res://Assets/Nodes/main_character.tscn" id="3_mo0fg"]
 [ext_resource type="Script" path="res://Assets/Scripts/PlayerCamera.cs" id="4_0ppp5"]
+[ext_resource type="PackedScene" uid="uid://cplo0upu8dufj" path="res://Assets/Nodes/Bear.tscn" id="5_hmxjy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xl6nv"]
 texture = ExtResource("2_wvmv8")
@@ -184,3 +185,6 @@ limit_right = 2000
 limit_bottom = 498
 script = ExtResource("4_0ppp5")
 tilemap = NodePath("../../TileMapLayer")
+
+[node name="Bear" parent="." instance=ExtResource("5_hmxjy")]
+position = Vector2(1792, 432)
