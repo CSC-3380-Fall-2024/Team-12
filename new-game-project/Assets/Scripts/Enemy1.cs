@@ -30,14 +30,14 @@ public partial class Enemy1 : CharacterBody2D
 
 	private Node2D player;
 
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		currentState = EnemyState.idle;
 		player = GetNode<Node2D>("../MainCharacter");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+
 	public override void _PhysicsProcess(double delta)
 	{
 
@@ -117,24 +117,24 @@ public partial class Enemy1 : CharacterBody2D
 
 		if (danceFramesRemaining <= 0)
 		{
-			// Choose a new random horizontal direction (-1 for left, 1 for right)
+
 			float randomHorizontal = _rng.Next(0, 2) == 0 ? -1f : 1f;
 
-			danceDirection = new Vector2(randomHorizontal, 0); // Only horizontal movement
+			danceDirection = new Vector2(randomHorizontal, 0);
 
-			danceFramesRemaining = _rng.Next(30, 90); // Random number of frames (adjust range as needed)
+			danceFramesRemaining = _rng.Next(30, 90);
 			GD.Print("New Dance Direction: ", danceDirection, " for ", danceFramesRemaining, " frames");
 		}
 
-		// Move in the chosen direction
+
 		velocity = new Vector2(Mathf.MoveToward(velocity.X, danceDirection.X * speed, (float)(ACCELERATION * delta)), Velocity.Y);
 
 
-		// Apply movement using MoveAndSlide
-		Velocity = velocity; // Update the internal velocity
+
+		Velocity = velocity;
 		MoveAndSlide();
 
-		// Decrease frame count
+
 		danceFramesRemaining--;
 	}
 
