@@ -10,11 +10,13 @@ public partial class Enemy1 : CharacterBody2D
 	public float FARRANGE = 500f;
 	[Export]
 	public float speed = 300f;
-	public const float GRAVITY = 2000f;            // Gravity force
-	public const float DECELERATION = 1000f;        // Deceleration factor
+	public const float GRAVITY = 2000f;
+	public const float DECELERATION = 1000f;
 	public const float ACCELERATION = 800f;
 
 	private Random _rng = new Random();
+	private int danceFramesRemaining = 0;
+	private Vector2 danceDirection = Vector2.Zero;
 
 	private enum EnemyState
 	{
@@ -28,18 +30,19 @@ public partial class Enemy1 : CharacterBody2D
 
 	private Node2D player;
 
-	// Called when the node enters the scene tree for the first time.
+
 	public override void _Ready()
 	{
 		currentState = EnemyState.idle;
 		player = GetNode<Node2D>("../MainCharacter");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+
 	public override void _PhysicsProcess(double delta)
 	{
 
 		applyGravity(delta);
+		HandleStateTransitions();
 
 
 		if (Position.DistanceTo(player.Position) <= detectionRadius)
@@ -57,7 +60,11 @@ public partial class Enemy1 : CharacterBody2D
 		}
 		if (currentState == EnemyState.active)
 		{
-			HandleActive(delta);
+			handleActive(delta);
+		}
+		if (currentState == EnemyState.dance)
+		{
+			HandleDance(delta);
 		}
 
 		MoveAndSlide();
@@ -68,26 +75,82 @@ public partial class Enemy1 : CharacterBody2D
 		GD.Print("IDLE");
 	}
 
-	private void HandleActive(double delta)
+	public float acceleration = 1000f;
+	public float deceleration = 1000f;
+
+	private Vector2 velocity = new Vector2();
+
+	private void handleActive(double delta)
 	{
-		if (Position.DistanceTo(player.Position) <= CLOSERANGE)
+		Vector2 direction;
+		float distanceToPlayer = Position.DistanceTo(player.Position);
+
+
+		if (distanceToPlayer <= CLOSERANGE)
 		{
-			GD.Print("VERY CLOSE");
-		}
-		if (Position.DistanceTo(player.Position) >= FARRANGE)
-		{
-			GD.Print("VERY FAR");
+			GD.Print("TOO CLOSE, MOVING AWAY");
+			direction = (Position - player.Position).Normalized();
+			velocity = velocity.MoveToward(direction * speed, acceleration * (float)delta);
 		}
 
-		GD.Print(Position.DistanceTo(player.Position));
+		else if (distanceToPlayer >= FARRANGE)
+		{
+			GD.Print("TOO FAR, MOVING TOWARD DANCE RANGE");
+			direction = (player.Position - Position).Normalized();
+			velocity = velocity.MoveToward(direction * speed, acceleration * (float)delta);
+		}
 
-		Vector2 direction = (player.Position - Position).Normalized();
-		Position += direction * speed * (float)delta;
+		else if (distanceToPlayer > CLOSERANGE && distanceToPlayer < FARRANGE)
+		{
+
+			currentState = EnemyState.dance;
+			velocity = velocity.MoveToward(Vector2.Zero, deceleration * (float)delta);
+		}
+
+
+		Position += velocity * (float)delta;
 	}
 
-	private void dance()
+
+	private void HandleDance(double delta)
 	{
 
+		if (danceFramesRemaining <= 0)
+		{
+
+			float randomHorizontal = _rng.Next(0, 2) == 0 ? -1f : 1f;
+
+			danceDirection = new Vector2(randomHorizontal, 0);
+
+			danceFramesRemaining = _rng.Next(30, 90);
+			GD.Print("New Dance Direction: ", danceDirection, " for ", danceFramesRemaining, " frames");
+		}
+
+
+		velocity = new Vector2(Mathf.MoveToward(velocity.X, danceDirection.X * speed, (float)(ACCELERATION * delta)), Velocity.Y);
+
+
+
+		Velocity = velocity;
+		MoveAndSlide();
+
+
+		danceFramesRemaining--;
+	}
+
+	private void HandleStateTransitions()
+	{
+		if (currentState != EnemyState.dance || danceFramesRemaining <= 0)
+		{
+			if (Position.DistanceTo(player.Position) <= CLOSERANGE)
+			{
+				currentState = EnemyState.idle;
+			}
+			else if (Position.DistanceTo(player.Position) >= FARRANGE)
+			{
+				currentState = EnemyState.active;
+			}
+		}
 	}
 
 	public void applyGravity(double delta)
