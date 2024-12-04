@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dog7g4yts1ybp" path="res://bossbaby.png" id="2_41u0b"]
 [ext_resource type="AudioStream" uid="uid://ba1bv2083y7mw" path="res://Assets/Sounds/Button_Sounds/StartGame.mp3" id="3_g77wp"]
 [ext_resource type="PackedScene" uid="uid://q3sb0cpkiy6q" path="res://Assets/Sounds/StartMusic.tscn" id="4_fowwd"]
-[ext_resource type="AudioStream" uid="uid://cnswixk4sj023" path="res://Assets/Sounds/Button_Sounds/ButtonClick.mp3" id="5_nun2r"]
+[ext_resource type="AudioStream" uid="uid://cnswixk4sj023" path="res://Assets/Overworld/ButtonClick.mp3" id="5_nun2r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1e11"]
 bg_color = Color(0.447059, 0.615686, 0.788235, 1)

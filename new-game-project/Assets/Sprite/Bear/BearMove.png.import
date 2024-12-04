@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvlpvny36orn2"
-path="res://.godot/imported/bear_idle.png-22a60ff52b0e219868d672ecb738b1d8.ctex"
+uid="uid://dxosj4vbtk8nx"
+path="res://.godot/imported/BearMove.png-5d641a640c0f50f714acf6ff16b9fb01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprite/Bear/bear_idle.png"
-dest_files=["res://.godot/imported/bear_idle.png-22a60ff52b0e219868d672ecb738b1d8.ctex"]
+source_file="res://Assets/Sprite/Bear/BearMove.png"
+dest_files=["res://.godot/imported/BearMove.png-5d641a640c0f50f714acf6ff16b9fb01.ctex"]
 
 [params]
 
