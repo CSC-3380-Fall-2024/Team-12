@@ -168,6 +168,10 @@ private AnimatedSprite2D jumpAnimation;
 		{
 			velocityY += GRAVITY * (float)delta;
 		}
+		if(hit.Visible == true){
+			defmove.Visible = false;
+			jumpAnimation.Visible=false;
+		}
 
 if (Input.IsActionJustPressed("hit") && IsOnFloor())
 		{
