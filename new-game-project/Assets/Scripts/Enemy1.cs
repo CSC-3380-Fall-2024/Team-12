@@ -42,6 +42,7 @@ public partial class Enemy1 : CharacterBody2D
 	{
 
 		applyGravity(delta);
+		HandleStateTransitions();
 
 
 		if (Position.DistanceTo(player.Position) <= detectionRadius)
@@ -121,12 +122,13 @@ public partial class Enemy1 : CharacterBody2D
 
 			danceDirection = new Vector2(randomHorizontal, 0); // Only horizontal movement
 
-			danceFramesRemaining = _rng.Next(90, 300); // Random number of frames (adjust range as needed)
+			danceFramesRemaining = _rng.Next(30, 90); // Random number of frames (adjust range as needed)
 			GD.Print("New Dance Direction: ", danceDirection, " for ", danceFramesRemaining, " frames");
 		}
 
 		// Move in the chosen direction
-		velocity = new Vector2(danceDirection.X * speed, Velocity.Y);
+		velocity = new Vector2(Mathf.MoveToward(velocity.X, danceDirection.X * speed, (float)(ACCELERATION * delta)), Velocity.Y);
+
 
 		// Apply movement using MoveAndSlide
 		Velocity = velocity; // Update the internal velocity
@@ -134,6 +136,21 @@ public partial class Enemy1 : CharacterBody2D
 
 		// Decrease frame count
 		danceFramesRemaining--;
+	}
+
+	private void HandleStateTransitions()
+	{
+		if (currentState != EnemyState.dance || danceFramesRemaining <= 0)
+		{
+			if (Position.DistanceTo(player.Position) <= CLOSERANGE)
+			{
+				currentState = EnemyState.idle;
+			}
+			else if (Position.DistanceTo(player.Position) >= FARRANGE)
+			{
+				currentState = EnemyState.active;
+			}
+		}
 	}
 
 	public void applyGravity(double delta)
