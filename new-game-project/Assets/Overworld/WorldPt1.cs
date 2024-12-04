@@ -14,7 +14,10 @@ public partial class WorldPt1 : Node2D
 	}
 
 	public void _on_button_pressed_overworldsettings() {
-		GD.Print("Hey");
 		GetNode<SettingsMenu>("/root/world/CanvasLayer/SettingsMenu").Show();
+	}
+
+	public void SwitchToLevelOne() {
+		GetNode<LoadingScreen>("/root/world/CanvasLayer/Loading").LoadScene("res://Assets/Levels/LevelOne.tscn");
 	}
 }

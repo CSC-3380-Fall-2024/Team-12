@@ -39,4 +39,8 @@ public partial class Game : Node2D
 	{
 
 	}
+
+	public void LoadBackToTopDown() {
+		GetNode<LoadingScreen>("/root/LevelOne/CanvasLayer/Loading").LoadScene("res://Assets/Overworld/world_pt_1.tscn");
+	}
 }

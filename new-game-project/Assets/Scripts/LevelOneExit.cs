@@ -12,20 +12,22 @@ public partial class LevelOneExit : Area2D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-		if (entered == true) {
-			if (Input.IsAnythingPressed()) {
-				GetTree().ChangeSceneToFile("res://Assets/Overworld/world_pt_1.tscn");
-			}
-		}
+		// if (entered == true) {
+		// 	if (Input.IsAnythingPressed()) {
+		// 		GetTree().ChangeSceneToFile("res://Assets/Overworld/world_pt_1.tscn");
+		// 	}
+		// }
 	}
 
 	public void _on_area_2d_body_entered(CharacterBody2D body) {
 		if (body == GetNode<CharacterBody2D>("/root/LevelOne/MainCharacter")) {
-			entered = true;
+			// entered = true;
+			GetNode<Game>("/root/LevelOne").LoadBackToTopDown();
 		}
 	}
 
 	public void _on_area_2d_body_exited(Node2D body) {
 		entered = false;
 	}
+
 }
