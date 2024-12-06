@@ -70,6 +70,7 @@ stream = ExtResource("5_nun2r")
 volume_db = 5.571
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("4_fowwd")]
+stream = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

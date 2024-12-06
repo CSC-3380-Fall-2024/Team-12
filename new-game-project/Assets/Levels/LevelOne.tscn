@@ -316,6 +316,7 @@ offset_bottom = 0.0
 visible = false
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("14_8gg85")]
+stream = null
 
 [node name="BgWindow" type="Sprite2D" parent="."]
 position = Vector2(2650, 150)

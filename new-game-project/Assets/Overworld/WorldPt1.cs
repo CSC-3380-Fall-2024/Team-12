@@ -20,4 +20,8 @@ public partial class WorldPt1 : Node2D
 	public void SwitchToLevelOne() {
 		GetNode<LoadingScreen>("/root/world/CanvasLayer/Loading").LoadScene("res://Assets/Levels/LevelOne.tscn");
 	}
+
+	public void SwitchToBossLevel() {
+		GetNode<LoadingScreen>("/root/world/CanvasLayer/Loading").LoadScene("res://Assets/Levels/BossLevel/BossLevel.tscn");
+	}
 }
