@@ -37,6 +37,8 @@ public partial class Dialog : Control
 			StartAndContinueConversation();	
 		}
 		else {
+			GetNode<Node2D>("/root/world/Key").Show();
+			GetNode<BossLevelEntrance>("/root/world/BossLevelEntrance").KeyObtained();
 			Hide();
 		}
 	}
