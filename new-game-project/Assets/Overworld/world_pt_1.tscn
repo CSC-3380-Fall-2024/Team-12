@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=22 format=4 uid="uid://xi68dqayttfh"]
 
 [ext_resource type="Script" path="res://Assets/Overworld/WorldPt1.cs" id="1_h0dik"]
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdit7iaahsp5m" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
 [ext_resource type="PackedScene" uid="uid://bomb86kfqp6c2" path="res://Assets/Sounds/TopDownAmbient.tscn" id="8_cyarh"]
 [ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
+[ext_resource type="PackedScene" uid="uid://ov6b8424yc5l" path="res://Assets/Sprite/Key.tscn" id="9_j0k0k"]
 [ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="12_36wtn"]
 [ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="12_t7dee"]
 [ext_resource type="Script" path="res://Assets/Overworld/BossLevelEntrance.cs" id="13_ddubd"]
@@ -2626,9 +2627,9 @@ tile_map_data = PackedByteArray("AAD8/+j/AQB0ACUAAAD8/+n/AQB0ACYAAAD8/+r/AQB0ACc
 tile_set = SubResource("TileSet_ocjq0")
 
 [node name="MC-boy" parent="TileMap" instance=ExtResource("5_u013e")]
-position = Vector2(1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap/MC-boy"]
+position = Vector2(-4, 0)
 
 [node name="Button" type="Button" parent="TileMap/MC-boy/Camera2D"]
 offset_left = 444.0
@@ -2646,8 +2647,12 @@ position = Vector2(-771, -542)
 shape = SubResource("CircleShape2D_m6lx1")
 
 [node name="NPC" parent="." instance=ExtResource("7_5thep")]
-position = Vector2(-180, -113)
+position = Vector2(-185, -118)
 scale = Vector2(0.781229, 0.769469)
+
+[node name="Key" parent="." instance=ExtResource("9_j0k0k")]
+visible = false
+position = Vector2(9, -17)
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("8_cyarh")]
 
@@ -2684,11 +2689,11 @@ offset_bottom = -414.0
 text = "Level One"
 
 [node name="BossLevelLabel" type="Label" parent="."]
-offset_left = 642.0
-offset_top = -418.0
-offset_right = 723.0
-offset_bottom = -395.0
-text = "Boss Level"
+offset_left = 555.0
+offset_top = -426.0
+offset_right = 823.0
+offset_bottom = -403.0
+text = "Boss Level (Key from NPC required)"
 
 [connection signal="pressed" from="TileMap/MC-boy/Camera2D/Button" to="." method="_on_button_pressed_overworldsettings"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
