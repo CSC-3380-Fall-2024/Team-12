@@ -74,7 +74,7 @@ public partial class SettingsMenu : Control
 		}	
 		slide.Value = (float)config.GetValue("Settings", "VolumeLevel");
 		check.ButtonPressed = (bool)config.GetValue("Settings", "MuteOption");
-		window.Selected = (int)config.GetValue("Settings", "WindowOption");
+		window.Selected = 0; //Always go to fullscreen
 	}
 
 	public void ChangeToFullScreen() {
@@ -90,7 +90,7 @@ public partial class SettingsMenu : Control
 		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
 	}
 	public void ChangeToBorderlessWindowed() {
-		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
 	}
 }

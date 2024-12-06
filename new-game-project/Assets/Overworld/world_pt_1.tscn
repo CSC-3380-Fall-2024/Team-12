@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=21 format=4 uid="uid://xi68dqayttfh"]
 
 [ext_resource type="Script" path="res://Assets/Overworld/WorldPt1.cs" id="1_h0dik"]
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
 [ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="12_36wtn"]
 [ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="12_t7dee"]
+[ext_resource type="Script" path="res://Assets/Overworld/BossLevelEntrance.cs" id="13_ddubd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]
 texture = ExtResource("2_v6e4b")
@@ -2600,6 +2601,9 @@ sources/3 = SubResource("TileSetAtlasSource_h8stt")
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6lx1"]
 radius = 35.0571
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q32fo"]
+radius = 36.0139
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_h0dik")
 
@@ -2664,6 +2668,30 @@ visible = false
 size_flags_horizontal = 4
 metadata/_edit_use_anchors_ = true
 
+[node name="BossLevelEntrance" type="Area2D" parent="."]
+position = Vector2(154, -44)
+script = ExtResource("13_ddubd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossLevelEntrance"]
+position = Vector2(527, -199)
+shape = SubResource("CircleShape2D_q32fo")
+
+[node name="LevelOneLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = -437.0
+offset_right = 94.0
+offset_bottom = -414.0
+text = "Level One"
+
+[node name="BossLevelLabel" type="Label" parent="."]
+offset_left = 642.0
+offset_top = -418.0
+offset_right = 723.0
+offset_bottom = -395.0
+text = "Boss Level"
+
 [connection signal="pressed" from="TileMap/MC-boy/Camera2D/Button" to="." method="_on_button_pressed_overworldsettings"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="BossLevelEntrance" to="BossLevelEntrance" method="_on_body_entered_boss"]
+[connection signal="body_exited" from="BossLevelEntrance" to="BossLevelEntrance" method="_on_body_exitedboss"]
