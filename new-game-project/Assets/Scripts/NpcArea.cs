@@ -15,6 +15,9 @@ public partial class NpcArea : Area2D
 			GetNode<Control>("Dialog").Show();
 			GetNode<Dialog>("Dialog").StartDialog();
 		}
+		else {
+			GetNode<Control>("Dialog").Hide();
+		}
 	}
 	public void _on_body_entered(CharacterBody2D body) {
 		if (body == GetNode<CharacterBody2D>("/root/world/TileMap/MC-boy")) {

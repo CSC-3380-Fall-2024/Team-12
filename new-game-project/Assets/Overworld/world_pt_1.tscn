@@ -2647,7 +2647,7 @@ position = Vector2(-771, -542)
 shape = SubResource("CircleShape2D_m6lx1")
 
 [node name="NPC" parent="." instance=ExtResource("7_5thep")]
-position = Vector2(-185, -118)
+position = Vector2(-134, -162)
 scale = Vector2(0.781229, 0.769469)
 
 [node name="Key" parent="." instance=ExtResource("9_j0k0k")]

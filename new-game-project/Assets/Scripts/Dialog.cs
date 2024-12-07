@@ -32,14 +32,22 @@ public partial class Dialog : Control
 	}
 
 	public void GoToNextSentence() {
-		if (index < dialog.Length - 1) {
+		if (index < dialog.Length - 2) {
 			index += 1;
 			StartAndContinueConversation();	
 		}
-		else {
+		else if (index == dialog.Length - 2){
+			index += 1;
+			StartAndContinueConversation();	
 			GetNode<Node2D>("/root/world/Key").Show();
 			GetNode<BossLevelEntrance>("/root/world/BossLevelEntrance").KeyObtained();
-			Hide();
 		}
+		else {
+			return;
+		}
+	}
+
+	public void HideDialog() {
+		Hide();
 	}
 }
