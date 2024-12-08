@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://fy28ufu458l7"]
+[gd_scene load_steps=21 format=3 uid="uid://fy28ufu458l7"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Player.cs" id="1_lraqc"]
 [ext_resource type="Texture2D" uid="uid://cp1b4f7j7ksfk" path="res://Assets/Sprite/baby_idle2.png" id="2_urd1s"]
@@ -90,6 +90,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2tyc"]
+size = Vector2(113, 120)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_35lu0"]
+radius = 201.884
+
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_layer = 6
 script = ExtResource("1_lraqc")
@@ -127,3 +133,20 @@ visible = false
 position = Vector2(8, -62)
 scale = Vector2(4.0625, 4)
 sprite_frames = SubResource("SpriteFrames_3v8ke")
+
+[node name="hitboxarea" type="Area2D" parent="."]
+
+[node name="hitboxplayer" type="CollisionShape2D" parent="hitboxarea"]
+position = Vector2(-1.5, -63)
+shape = SubResource("RectangleShape2D_x2tyc")
+
+[node name="attack" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="attackhitbox" type="CollisionShape2D" parent="attack"]
+position = Vector2(0, -64)
+shape = SubResource("CircleShape2D_35lu0")
+
+[connection signal="area_entered" from="hitboxarea" to="." method="_on_hitboxarea_area_entered"]
+[connection signal="body_entered" from="attack" to="." method="_on_attackhitbox_body_entered"]

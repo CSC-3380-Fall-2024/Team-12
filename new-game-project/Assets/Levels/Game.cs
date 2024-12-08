@@ -15,21 +15,21 @@ public partial class Game : Node2D
 			GD.Print("Remove This");
 			 Node kid = GetNode<Node>("InteractionArea");	
         RemoveChild(kid);
-        // Free the child node
+      
         kid.QueueFree();
 		}
 		if(child.Name == "cookieRemove"){
 			GD.Print("Remove This");
 			 Node kid = GetNode<Node>("InteractionAreaCookie");	
         RemoveChild(kid);
-        // Free the child node
+       
         kid.QueueFree();
 		}
 		if(child.Name == "potionramove"){
 			GD.Print("Remove This");
 			 Node kid = GetNode<Node>("InteractionPotion");	
         RemoveChild(kid);
-        // Free the child node
+        
         kid.QueueFree();
 		}
 	}
