@@ -312,8 +312,10 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 		if (health.Value == 0){
 			GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn");
 		}
-
+		}
 	}
+
+	
 	    private void OnTimeout()
     {
         hit.Visible = false; 
