@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://pid1nvbu2bbi"]
+[gd_scene load_steps=26 format=4 uid="uid://pid1nvbu2bbi"]
 
 [ext_resource type="PackedScene" uid="uid://dseomw7ncy04i" path="res://Assets/Levels/LevelOneBackground/bg.tscn" id="1_i7u6x"]
 [ext_resource type="Script" path="res://Assets/Levels/Game.cs" id="1_o0d4d"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d2v4otnk07idh" path="res://Assets/Sounds/LevelOneMusic.tscn" id="14_8gg85"]
 [ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="14_rcryj"]
 [ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="15_g7bc2"]
+[ext_resource type="PackedScene" uid="uid://b671re5asb47p" path="res://Assets/Nodes/Enemy1.tscn" id="22_fqf7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tvclc"]
 texture = ExtResource("3_jkgtu")
@@ -294,14 +295,14 @@ position = Vector2(12470, -142)
 shape = SubResource("CircleShape2D_dsfay")
 
 [node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
-position = Vector2(831, 317)
+position = Vector2(1155, 225)
 collision_mask = 255
 
 [node name="InteractionArea" parent="." instance=ExtResource("10_ma6qi")]
-position = Vector2(480, 468)
+position = Vector2(1344, 220)
 
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
-position = Vector2(1059, 466)
+position = Vector2(1641, 202)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -329,6 +330,9 @@ texture = ExtResource("7_a4dla")
 [node name="BgWindow3" type="Sprite2D" parent="."]
 position = Vector2(6100, 150)
 texture = ExtResource("7_a4dla")
+
+[node name="Node2D" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(572, 534)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="LevelOneExit" to="LevelOneExit" method="_on_area_2d_body_entered"]

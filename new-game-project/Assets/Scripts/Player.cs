@@ -24,7 +24,7 @@ public partial class Player : CharacterBody2D
 	private float dashTimeLeft = 0f;
 	private float dashCoolDownTime = 0f;
 
-
+	private Area2D hitbox;
 	private ProgressBar health;
 
 	private int[] healtharray = new int[4];
@@ -49,8 +49,12 @@ private AnimatedSprite2D hit;
 private AnimatedSprite2D defmove;
 private AnimatedSprite2D jumpAnimation;
  private Timer animationtime;
+ private Area2D attackAOE;
+
+private CollisionShape2D disablehitbox;
 	public override void _Ready()
 	{
+		
 
 		animationtime = new Timer();
         animationtime .WaitTime = 0.5f; 
@@ -77,6 +81,12 @@ private AnimatedSprite2D jumpAnimation;
 		 defmove = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		defmove.Visible = true;
 		jumpAnimation =  GetNode<AnimatedSprite2D>("jump");
+
+		hitbox = GetNode<Area2D>("hitboxplayer");
+		hitbox.AreaEntered += _on_hitboxarea_area_entered;
+		attackAOE = GetNode<Area2D>("attackhitbox");
+		disablehitbox = GetNode<CollisionShape2D>("attack/attackhitbox");
+		
 	}
 
 	public void hparray()
@@ -93,6 +103,27 @@ private AnimatedSprite2D jumpAnimation;
 
 	 health.Value = health.hp;
 	 }
+	   private void _on_hitboxarea_area_entered(Area2D area)
+    {
+		//GD.Print("99999");
+		        if (area.GetParent() is Enemy1)
+        {
+			//GD.Print("IN DA ZONE");
+            health.Value -= 1;
+        }
+	}
+
+	private void _on_attackhitbox_body_entered(Node body)
+    {
+		    GD.Print($"Body entered: {body.Name} of type {body.GetType()}");
+		if (body is Enemy1 enemy){
+		enemy.TakeDamage(1);
+		
+		}
+
+            
+        
+	}
 	 
     public override void _PhysicsProcess(double delta)
 	{
@@ -135,6 +166,7 @@ private AnimatedSprite2D jumpAnimation;
 
 		
 		int i =0;
+
 			if(!IsOnFloor()){
 			jumpAnimation.Visible =true;
 			if (horizontalInput != 0)
@@ -150,6 +182,9 @@ private AnimatedSprite2D jumpAnimation;
 			defmove.Visible = false;
 			i=0;
 			}
+
+
+
 			if(IsOnFloor()){
 			jumpAnimation.Visible =false;
 			defmove.Visible=false;
@@ -160,9 +195,13 @@ private AnimatedSprite2D jumpAnimation;
 			if(Input.IsActionJustPressed("hit")){
 				defmove.Visible = false;
 				i++;
+				
 			}
 			
 			}
+
+
+
 
 		if (!jumpRequested)
 		{
@@ -178,8 +217,18 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 			hit.Visible = true;
 			i = 2;
 			defmove.Visible = false;
-			
+			GD.Print("attacking");
 			animationtime.Start();
+			attackAOE.BodyEntered += _on_attackhitbox_body_entered;
+			
+		
+			
+
+
+
+
+
+
 			if (horizontalInput != 0)
 		{
 			Velocity = new Vector2(Mathf.MoveToward(Velocity.X, targetSpeed, ACCELERATION * (float)delta), velocityY);
@@ -314,7 +363,7 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 
 	private void PerformDash(float delta)
 	{
-		GD.Print("Performing Dash");
+		//GD.Print("Performing Dash");
 		Velocity = dashDirection * dashSpeed;
 		dashTimeLeft -= delta;
 
