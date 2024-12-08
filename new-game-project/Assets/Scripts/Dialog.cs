@@ -40,7 +40,6 @@ public partial class Dialog : Control
 			index += 1;
 			StartAndContinueConversation();	
 			GetNode<Node2D>("/root/world/Key").Show();
-			GetNode<BossLevelEntrance>("/root/world/BossLevelEntrance").KeyObtained();
 		}
 		else {
 			return;

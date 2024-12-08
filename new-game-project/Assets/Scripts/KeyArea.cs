@@ -14,6 +14,7 @@ public partial class KeyArea : Area2D
 
 	public void _on_body_entered_key(CharacterBody2D body) {
 		if (body == GetNode<CharacterBody2D>("/root/world/TileMap/MC-boy")) {
+			GetNode<BossLevelEntrance>("/root/world/BossLevelEntrance").KeyObtained();
 			GetNode<Node2D>("/root/world/Key").Hide();
 		}
 	}
