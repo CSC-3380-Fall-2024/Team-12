@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://ov6b8424yc5l"]
+[gd_scene load_steps=4 format=3 uid="uid://ov6b8424yc5l"]
 
 [ext_resource type="Texture2D" uid="uid://bymf08my8msah" path="res://Assets/key.png" id="1_a0qhm"]
+[ext_resource type="Script" path="res://Assets/Scripts/KeyArea.cs" id="2_vmih4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_25k3s"]
+radius = 9.12364
 
 [node name="Node2D" type="Node2D"]
 
@@ -8,3 +12,20 @@
 position = Vector2(387.188, 134)
 scale = Vector2(3.55078, 2.8125)
 texture = ExtResource("1_a0qhm")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -31.0321
+offset_top = -31.6444
+offset_right = 48.9679
+offset_bottom = -8.64444
+theme_override_font_sizes/font_size = 7
+text = "Walk Over To Pick Up"
+
+[node name="KeyArea" type="Area2D" parent="Sprite2D"]
+script = ExtResource("2_vmih4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/KeyArea"]
+position = Vector2(1.91846, -4.62222)
+shape = SubResource("CircleShape2D_25k3s")
+
+[connection signal="body_entered" from="Sprite2D/KeyArea" to="Sprite2D/KeyArea" method="_on_body_entered_key"]

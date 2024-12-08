@@ -21,6 +21,7 @@ bg_color = Color(0.447059, 0.615686, 0.788235, 1)
 bg_color = Color(0.447059, 0.615686, 0.788235, 1)
 
 [node name="StartMenu" type="Node2D"]
+position = Vector2(0, -2)
 scale = Vector2(1, 0.99694)
 script = ExtResource("1_q432k")
 
