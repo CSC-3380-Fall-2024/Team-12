@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dvu6wenlog7d6"]
+
+[node name="ENDING" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 425.0
+offset_top = 193.0
+offset_right = 1084.0
+offset_bottom = 393.0
+text = "GOOD GAME MAN "

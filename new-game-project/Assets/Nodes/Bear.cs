@@ -1,10 +1,11 @@
 using Godot;
 using System;
 
-public partial class Enemy1 : CharacterBody2D
+public partial class Bear : CharacterBody2D
 {
-	//hello
-
+//hello
+	private AnimatedSprite2D bear1;
+	private AnimatedSprite2D bear2;
 	public float detectionRadius = 600f;
 	public float CLOSERANGE = 200f;
 	public float FARRANGE = 500f;
@@ -30,15 +31,18 @@ public partial class Enemy1 : CharacterBody2D
 
 	private Node2D player;
 
-	private ProgressBarEnemy healthBar;
+	private ProgressBarBoss healthBar;
+	 private PackedScene deathbear = (PackedScene)ResourceLoader.Load("res://Assets/Levels/BossLevel/placeholdforboss.tscn");
 
 
 	public override void _Ready()
 	{
 		currentState = EnemyState.idle;
 		player = GetNode<Node2D>("../MainCharacter");
-		healthBar = GetNode<ProgressBarEnemy>("Enemy_hp/ProgressBarEnemy");
-		healthBar.enemyhp = 4;
+		healthBar = GetNode<ProgressBarBoss>("bosshp/ProgressBarBOSS");
+		healthBar.enemybosshp = 5;
+		bear1 = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		bear2 = GetNode<AnimatedSprite2D>("AnimatedSprite2D2");
 	
 	}
 
@@ -71,6 +75,7 @@ public partial class Enemy1 : CharacterBody2D
 		{
 			HandleDance(delta);
 		}
+		
 
 		MoveAndSlide();
 		
@@ -78,7 +83,7 @@ public partial class Enemy1 : CharacterBody2D
 
 	private void HandleIdle()
 	{
-		GD.Print("IDLE");
+		//GD.Print("IDLE");
 	}
 
 	public float acceleration = 1000f;
@@ -166,11 +171,23 @@ public partial class Enemy1 : CharacterBody2D
 	}
 	    public void TakeDamage(int damage)
     {
-		healthBar.enemyhp -= damage;
-		healthBar.Value = healthBar.enemyhp;
+		healthBar.enemybosshp -= damage;
+		healthBar.Value = healthBar.enemybosshp;
+		if  (healthBar.Value <= 5){
+			bear1.Visible = false;
+			bear2.Visible = true;
+		}
         if (healthBar.Value <= 0)
         {
-            QueueFree(); 
+           
+			Node endgame = deathbear.Instantiate();
+			var gameNode = GetParent() as Node2D;
+			//GD.Print("GameNode is: ", gameNode.Name); 
+        		endgame.Name = "placeholderforboss"; 
+				gameNode.AddChild(endgame);
+				//GD.Print("Added placeholderforboss to: ", gameNode.Name);
+				 QueueFree(); 
+			
         	
    		 }
 	}

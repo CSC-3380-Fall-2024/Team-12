@@ -276,7 +276,7 @@ position = Vector2(10901, 471)
 position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
-position = Vector2(190, 400)
+position = Vector2(12354, 266)
 collision_layer = 255
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
@@ -295,11 +295,11 @@ position = Vector2(12470, -142)
 shape = SubResource("CircleShape2D_dsfay")
 
 [node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
-position = Vector2(1155, 225)
+position = Vector2(2009, 494)
 collision_mask = 255
 
 [node name="InteractionArea" parent="." instance=ExtResource("10_ma6qi")]
-position = Vector2(1344, 220)
+position = Vector2(12843, 178)
 
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
 position = Vector2(1641, 202)
@@ -333,6 +333,63 @@ texture = ExtResource("7_a4dla")
 
 [node name="Node2D" parent="." instance=ExtResource("22_fqf7a")]
 position = Vector2(572, 534)
+
+[node name="Node2D2" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(1138, 522)
+
+[node name="Node2D3" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(1920, 275)
+
+[node name="Node2D4" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(2510, 391)
+
+[node name="Node2D5" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(4261, 383)
+
+[node name="Node2D6" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(5418, 537)
+
+[node name="Node2D7" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(6721, 538)
+
+[node name="Node2D8" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(7773, 537)
+
+[node name="Node2D9" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(9488, 537)
+
+[node name="Node2D10" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(11330, 535)
+
+[node name="Node2D11" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(10444, 537)
+
+[node name="Node2D12" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(12483, 541)
+
+[node name="Node2D13" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(12606, 540)
+
+[node name="Node2D14" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(12874, 535)
+
+[node name="Node2D15" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(12740, 541)
+
+[node name="Node2D16" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(13157, 531)
+
+[node name="Node2D17" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(13299, 535)
+
+[node name="Node2D18" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(12998, 537)
+
+[node name="Node2D19" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(13458, 535)
+
+[node name="Node2D20" parent="." instance=ExtResource("22_fqf7a")]
+position = Vector2(12371, 540)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="LevelOneExit" to="LevelOneExit" method="_on_area_2d_body_entered"]

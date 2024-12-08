@@ -3,7 +3,7 @@ using System;
 
 public partial class ProgressBarEnemy : ProgressBar
 {
-	public int enemyhp = 5;
+	public int enemyhp = 4;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

@@ -50,12 +50,13 @@ private AnimatedSprite2D defmove;
 private AnimatedSprite2D jumpAnimation;
  private Timer animationtime;
  private Area2D attackAOE;
+ private ArmorGlobal cape;
 
 private CollisionShape2D disablehitbox;
 	public override void _Ready()
 	{
 		
-
+		 cape = (ArmorGlobal)GetNode("/root/ArmorGlobal");
 		animationtime = new Timer();
         animationtime .WaitTime = 0.5f; 
         animationtime .OneShot = true;
@@ -75,6 +76,7 @@ private CollisionShape2D disablehitbox;
 
 		health = GetNode<ProgressBar>("HealthBar/ProgressBar");
 		healtharray[1] = 0;
+		checkArmor();
 		hparray();
 		 hit = GetNode<AnimatedSprite2D>("hit");
 		 hit.Visible = false;
@@ -88,38 +90,52 @@ private CollisionShape2D disablehitbox;
 		disablehitbox = GetNode<CollisionShape2D>("attack/attackhitbox");
 		
 	}
-
+	public void checkArmor(){
+		if (cape.Armor == 0){
+			healtharray[1]= 0;
+		}else 
+		{
+			healtharray[1] = 1;
+		}
+	}
 	public void hparray()
 	{
 		if (healtharray[1] == 0)
 		{
 			health.hp = 5;
+			
 		}else if ( healtharray[1] == 1){
 		health.hp = 10;
-
-	 }else if (healtharray [1] == 2){
-		health.hp = 15;
-	 }
-
+	 	}
+	 
 	 health.Value = health.hp;
+
 	 }
 	   private void _on_hitboxarea_area_entered(Area2D area)
     {
-		//GD.Print("99999");
+		
+		GD.Print("Area entered: ", area);
 		        if (area.GetParent() is Enemy1)
         {
 			//GD.Print("IN DA ZONE");
             health.Value -= 1;
         }
+		else if (area.GetParent().Name == "Bear"){
+			GD.Print("bear");
+			health.Value -= 3;
+		}
 	}
 
 	private void _on_attackhitbox_body_entered(Node body)
     {
-		    GD.Print($"Body entered: {body.Name} of type {body.GetType()}");
+		   
 		if (body is Enemy1 enemy){
-		enemy.TakeDamage(1);
-		
+		enemy.TakeDamage(4);
 		}
+		if (body is Bear scary){
+		scary.TakeDamage(1);
+		}
+		
 
             
         
@@ -162,7 +178,7 @@ private CollisionShape2D disablehitbox;
 			jumpTimer.Start();
 
 		}
-
+	
 
 		
 		int i =0;
@@ -196,6 +212,8 @@ private CollisionShape2D disablehitbox;
 				defmove.Visible = false;
 				i++;
 				
+
+				
 			}
 			
 			}
@@ -212,6 +230,7 @@ private CollisionShape2D disablehitbox;
 			jumpAnimation.Visible=false;
 		}
 
+
 if (Input.IsActionJustPressed("hit") && IsOnFloor())
 		{
 			hit.Visible = true;
@@ -219,7 +238,7 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 			defmove.Visible = false;
 			GD.Print("attacking");
 			animationtime.Start();
-			attackAOE.BodyEntered += _on_attackhitbox_body_entered;
+			
 			
 		
 			

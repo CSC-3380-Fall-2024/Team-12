@@ -91,10 +91,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2tyc"]
-size = Vector2(113, 120)
+size = Vector2(124, 115)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_35lu0"]
-radius = 201.884
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uihw5"]
+size = Vector2(47, 28)
 
 [node name="MainCharacter" type="CharacterBody2D"]
 collision_layer = 6
@@ -137,7 +137,7 @@ sprite_frames = SubResource("SpriteFrames_3v8ke")
 [node name="hitboxarea" type="Area2D" parent="."]
 
 [node name="hitboxplayer" type="CollisionShape2D" parent="hitboxarea"]
-position = Vector2(-1.5, -63)
+position = Vector2(0, -68.5)
 shape = SubResource("RectangleShape2D_x2tyc")
 
 [node name="attack" type="Area2D" parent="."]
@@ -145,8 +145,8 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="attackhitbox" type="CollisionShape2D" parent="attack"]
-position = Vector2(0, -64)
-shape = SubResource("CircleShape2D_35lu0")
+position = Vector2(-4.5, 1)
+shape = SubResource("RectangleShape2D_uihw5")
 
 [connection signal="area_entered" from="hitboxarea" to="." method="_on_hitboxarea_area_entered"]
 [connection signal="body_entered" from="attack" to="." method="_on_attackhitbox_body_entered"]
