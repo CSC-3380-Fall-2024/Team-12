@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cplo0upu8dufj"]
+[gd_scene load_steps=23 format=3 uid="uid://cplo0upu8dufj"]
 
+[ext_resource type="Script" path="res://Assets/Nodes/Bear.cs" id="1_a6es4"]
 [ext_resource type="Texture2D" uid="uid://xc8c37yf4sak" path="res://Assets/Sprite/Bear/BearAttack.png" id="1_c3icy"]
 [ext_resource type="Texture2D" uid="uid://ccq73rxvbifh3" path="res://Assets/Sprite/Bear/bearIdle.png" id="2_ptv3c"]
 [ext_resource type="Texture2D" uid="uid://dxosj4vbtk8nx" path="res://Assets/Sprite/Bear/BearMove.png" id="3_8b55d"]
-[ext_resource type="PackedScene" uid="uid://bh3uhccbq60n7" path="res://Assets/Nodes/health_bar.tscn" id="4_qddu3"]
+[ext_resource type="PackedScene" uid="uid://xw3e3u7cplst" path="res://Assets/Nodes/bosshp.tscn" id="5_jevxk"]
+[ext_resource type="Texture2D" uid="uid://dalrbcb72vt8p" path="res://Assets/Sprite/Bear/bearIdle2.png" id="6_f4iqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o30rf"]
 atlas = ExtResource("1_c3icy")
@@ -94,23 +96,63 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqaee"]
-size = Vector2(330, 206)
+size = Vector2(252, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbo1e"]
+size = Vector2(286, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq81c"]
+atlas = ExtResource("6_f4iqu")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7itee"]
+atlas = ExtResource("6_f4iqu")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g12uh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq81c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7itee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_a6es4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 6)
-scale = Vector2(1, 0.9625)
+scale = Vector2(0.625, 0.601563)
 sprite_frames = SubResource("SpriteFrames_i6pvo")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(-6, 5)
 shape = SubResource("RectangleShape2D_fqaee")
 
-[node name="HealthBar" parent="." instance=ExtResource("4_qddu3")]
-offset_left = 1.0
-offset_top = -192.0
-offset_right = 1.0
-offset_bottom = -192.0
+[node name="EnemyhitBear" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyhitBear"]
+position = Vector2(-3, 14)
+shape = SubResource("RectangleShape2D_lbo1e")
+
+[node name="bosshp" parent="." instance=ExtResource("5_jevxk")]
+offset_left = -94.0
+offset_top = -137.0
+offset_right = -94.0
+offset_bottom = -137.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(9.53674e-07, -1)
+scale = Vector2(0.69375, 0.69375)
+sprite_frames = SubResource("SpriteFrames_g12uh")
+autoplay = "default"
+frame_progress = 0.331998
