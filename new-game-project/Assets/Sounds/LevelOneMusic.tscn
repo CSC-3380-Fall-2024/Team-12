@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2v4otnk07idh"]
+
+[ext_resource type="AudioStream" uid="uid://dhd8tmuovh0qx" path="res://Assets/Sounds/LevelOneMusic.mp3" id="1_v4j5u"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_v4j5u")
+volume_db = -5.572
+autoplay = true

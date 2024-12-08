@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbcl41phyipea"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/gameover.cs" id="1_owyyn"]
+
+[node name="gameover" type="CanvasLayer"]
+script = ExtResource("1_owyyn")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 531.0
+offset_top = 182.0
+offset_right = -534.0
+offset_bottom = -443.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+
+[node name="Respawn" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 388.0
+offset_top = 311.0
+offset_right = -650.0
+offset_bottom = -290.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Respawn"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 637.0
+offset_top = 309.0
+offset_right = -396.0
+offset_bottom = -288.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

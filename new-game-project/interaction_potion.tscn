@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://swqabeeiets2"]
+
+[ext_resource type="Script" path="res://InteractionPotion.cs" id="1_nspxb"]
+[ext_resource type="Texture2D" uid="uid://33uolncuh8be" path="res://speed.png" id="2_tbyqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bob2i"]
+size = Vector2(82, 72)
+
+[node name="InteractionPotion" type="Area2D"]
+script = ExtResource("1_nspxb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 5)
+shape = SubResource("RectangleShape2D_bob2i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14.5, 14)
+scale = Vector2(3.28125, 3.125)
+texture = ExtResource("2_tbyqa")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -51.0
+offset_right = 42.0
+offset_bottom = -28.0
+text = "Press '2'"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

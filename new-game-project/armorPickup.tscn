@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bke18ajb6e6ve"]
+
+[ext_resource type="Texture2D" uid="uid://drjiegrf4hnn4" path="res://Assets/weapon/1cloak.png" id="1_c8ap5"]
+[ext_resource type="Script" path="res://Assets/Scripts/PlayerCamera.cs" id="2_g7mi7"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(197, 52)
+scale = Vector2(4.60156, 4.16797)
+texture = ExtResource("1_c8ap5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_g7mi7")
