@@ -268,9 +268,15 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 		Velocity = new Vector2(Velocity.X, velocityY);
 		MoveAndSlide();
 
+
+		if (interactable && Input.IsActionJustPressed("interact")){
+			interactableCookie = false;
+			GD.Print("12565556-");
+
 		if (interactable && Input.IsActionJustPressed("interact"))
 		{
 			GD.Print("Interacting in zone. Updating health...");
+
 			healtharray[1] = 1;
 			hparray();
 			interactable = false;
@@ -281,7 +287,9 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 		}
 
 		if (interactableCookie && Input.IsActionJustPressed("food")){
-			GD.Print("your 9000000000");
+
+			interactable = false;
+			GD.Print("9000000000");
 			hparray();
 			interactableCookie = false;
 			Node cookiepiickup = cookiePickup.Instantiate();
@@ -322,9 +330,11 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 		public void AreaEntered(Node body){
 			if (body is Player){
 				interactable = true;
+
 				interactableCookie = true;
 				interactablePotion = true; 
 				GD.Print("Player entered a general area");
+
 			
 			}
 			
@@ -334,6 +344,7 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 			if (body is Player){
 				
 			interactable = false;
+
 			interactableCookie = false;
 			}
 		}
