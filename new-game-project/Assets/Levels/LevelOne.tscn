@@ -276,9 +276,7 @@ position = Vector2(10901, 471)
 position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
-
 position = Vector2(12354, 266)
-
 collision_layer = 255
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
@@ -335,7 +333,6 @@ texture = ExtResource("7_a4dla")
 
 [node name="Node2D" parent="." instance=ExtResource("22_fqf7a")]
 position = Vector2(572, 534)
-
 
 [node name="Node2D2" parent="." instance=ExtResource("22_fqf7a")]
 position = Vector2(1138, 522)
@@ -401,7 +398,6 @@ offset_right = 13426.0
 offset_bottom = 125.0
 theme_override_font_sizes/font_size = 21
 text = "Jump Through Window!!"
-
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="body_entered" from="LevelOneExit" to="LevelOneExit" method="_on_area_2d_body_entered"]
