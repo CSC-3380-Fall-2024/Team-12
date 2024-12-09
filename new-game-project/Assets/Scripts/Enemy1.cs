@@ -78,7 +78,7 @@ public partial class Enemy1 : CharacterBody2D
 
 	private void HandleIdle()
 	{
-		GD.Print("IDLE");
+		//GD.Print("IDLE");
 	}
 
 	public float acceleration = 1000f;

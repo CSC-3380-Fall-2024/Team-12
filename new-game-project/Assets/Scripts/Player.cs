@@ -267,7 +267,32 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 
 		Velocity = new Vector2(Velocity.X, velocityY);
 		MoveAndSlide();
+	if (Input.IsActionJustPressed("takedmg")){
+			health.Value -= 1;
+		}
+				if (health.Value == 0){
+			GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn");
+		}
+				if (interactableCookie && Input.IsActionJustPressed("food")){
 
+			interactable = false;
+			GD.Print("9000000000");
+			hparray();
+			interactableCookie = false;
+			Node cookiepiickup = cookiePickup.Instantiate();
+			var gameNode = GetParent() as Node2D;
+        		gameNode.AddChild(cookiepiickup);
+        		cookiepiickup.Name = "foodPickup"; 
+		}
+				if (interactablePotion && Input.IsActionJustPressed("potion")){
+			Speed = 4000f;
+			interactablePotion = false;
+			Node potionpick = potionPickup.Instantiate();
+				var gameNode = GetParent() as Node2D;
+        		gameNode.AddChild(potionpick);
+        		potionpick.Name = "potionPickup"; 
+
+		}
 
 		if (interactable && Input.IsActionJustPressed("interact")){
 			interactableCookie = false;
@@ -286,32 +311,10 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
         		armorPickupInstance.Name = "armorPickup"; 
 		}
 
-		if (interactableCookie && Input.IsActionJustPressed("food")){
 
-			interactable = false;
-			GD.Print("9000000000");
-			hparray();
-			interactableCookie = false;
-			Node cookiepiickup = cookiePickup.Instantiate();
-			var gameNode = GetParent() as Node2D;
-        		gameNode.AddChild(cookiepiickup);
-        		cookiepiickup.Name = "foodPickup"; 
-		}
-		if (Input.IsActionJustPressed("takedmg")){
-			health.Value -= 1;
-		}
-		if (interactablePotion && Input.IsActionJustPressed("potion")){
-			Speed = 4000f;
-			interactablePotion = false;
-			Node potionpick = potionPickup.Instantiate();
-				var gameNode = GetParent() as Node2D;
-        		gameNode.AddChild(potionpick);
-        		potionpick.Name = "potionPickup"; 
+	
 
-		}
-		if (health.Value == 0){
-			GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn");
-		}
+
 		}
 	}
 
