@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bf07pwmadxe1v"]
+[gd_scene load_steps=12 format=4 uid="uid://bf07pwmadxe1v"]
 
 [ext_resource type="PackedScene" uid="uid://rqutm8n2ch4x" path="res://Assets/Levels/BossLevel/BossLevelBackground/BossLevelBG.tscn" id="1_nlm8u"]
 [ext_resource type="Script" path="res://Assets/Levels/BossLevel/BossLevel.cs" id="1_q3bc4"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Assets/Scripts/PlayerCamera.cs" id="4_0ppp5"]
 [ext_resource type="PackedScene" uid="uid://cplo0upu8dufj" path="res://Assets/Nodes/Bear.tscn" id="5_hmxjy"]
 [ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="6_qjdta"]
+[ext_resource type="PackedScene" uid="uid://db7glncx6t5nm" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Shelf.tscn" id="8_l7al2"]
+[ext_resource type="PackedScene" uid="uid://0qcglxoosdgj" path="res://Assets/Levels/LevelOneBackground/BG_Interactive_Objects/Table.tscn" id="9_sk2mh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xl6nv"]
 texture = ExtResource("2_wvmv8")
@@ -190,7 +192,7 @@ script = ExtResource("4_0ppp5")
 tilemap = NodePath("../../TileMapLayer")
 
 [node name="Bear" parent="." instance=ExtResource("5_hmxjy")]
-position = Vector2(1122, 464)
+position = Vector2(1584, 320)
 collision_layer = 15
 collision_mask = 15
 
@@ -198,6 +200,23 @@ collision_mask = 15
 
 [node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("6_qjdta")]
 visible = false
+
+[node name="Shelf" parent="." instance=ExtResource("8_l7al2")]
+position = Vector2(64, 440)
+scale = Vector2(0.75, 1.925)
+
+[node name="Shelf2" parent="." instance=ExtResource("8_l7al2")]
+position = Vector2(432, 320)
+
+[node name="Shelf3" parent="." instance=ExtResource("8_l7al2")]
+position = Vector2(816, 152)
+
+[node name="Table" parent="." instance=ExtResource("9_sk2mh")]
+position = Vector2(1632, 472)
+
+[node name="Shelf4" parent="." instance=ExtResource("8_l7al2")]
+position = Vector2(1191, 205)
+scale = Vector2(0.6, 1.925)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
