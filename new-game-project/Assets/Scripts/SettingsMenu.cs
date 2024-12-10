@@ -43,7 +43,7 @@ public partial class SettingsMenu : Control
 	}
 
 	public void _on_exit_settings_pressed() {
-		GetTree().ChangeSceneToFile("res://Assets/Nodes/start_menu.tscn"); //Change to change back to whatever scene it came from
+		Hide(); //Hide the settings menu
 	}
 
 	public void _on_change_resolution_item_selected(int index) {
@@ -74,7 +74,7 @@ public partial class SettingsMenu : Control
 		}	
 		slide.Value = (float)config.GetValue("Settings", "VolumeLevel");
 		check.ButtonPressed = (bool)config.GetValue("Settings", "MuteOption");
-		window.Selected = (int)config.GetValue("Settings", "WindowOption");
+		window.Selected = 0; //Always go to fullscreen
 	}
 
 	public void ChangeToFullScreen() {
@@ -90,7 +90,7 @@ public partial class SettingsMenu : Control
 		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
 	}
 	public void ChangeToBorderlessWindowed() {
-		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
 		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
 	}
 }

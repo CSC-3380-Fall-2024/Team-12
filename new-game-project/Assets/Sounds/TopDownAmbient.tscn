@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bomb86kfqp6c2"]
+
+[ext_resource type="AudioStream" uid="uid://dek541dvjww7v" path="res://Assets/Sounds/Top_Down_Ambient.mp3" id="1_ib2u8"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_ib2u8")
+volume_db = -5.0
+autoplay = true

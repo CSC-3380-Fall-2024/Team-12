@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ck77pyhdslr"]
+
+[ext_resource type="AudioStream" uid="uid://dro8lfihumwpc" path="res://Assets/Sounds/Top_Down_Music.mp3" id="1_76gnq"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_76gnq")
+volume_db = -3.095

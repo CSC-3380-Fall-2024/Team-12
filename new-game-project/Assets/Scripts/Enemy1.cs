@@ -30,17 +30,22 @@ public partial class Enemy1 : CharacterBody2D
 
 	private Node2D player;
 
+	private ProgressBarEnemy healthBar;
+
 
 	public override void _Ready()
 	{
 		currentState = EnemyState.idle;
 		player = GetNode<Node2D>("../MainCharacter");
+		healthBar = GetNode<ProgressBarEnemy>("Enemy_hp/ProgressBarEnemy");
+		healthBar.enemyhp = 4;
+	
 	}
 
 
 	public override void _PhysicsProcess(double delta)
 	{
-
+		
 		applyGravity(delta);
 		HandleStateTransitions();
 
@@ -68,11 +73,12 @@ public partial class Enemy1 : CharacterBody2D
 		}
 
 		MoveAndSlide();
+		
 	}
 
 	private void HandleIdle()
 	{
-		GD.Print("IDLE");
+		//GD.Print("IDLE");
 	}
 
 	public float acceleration = 1000f;
@@ -88,14 +94,14 @@ public partial class Enemy1 : CharacterBody2D
 
 		if (distanceToPlayer <= CLOSERANGE)
 		{
-			GD.Print("TOO CLOSE, MOVING AWAY");
+			// GD.Print("TOO CLOSE, MOVING AWAY");
 			direction = (Position - player.Position).Normalized();
 			velocity = velocity.MoveToward(direction * speed, acceleration * (float)delta);
 		}
 
 		else if (distanceToPlayer >= FARRANGE)
 		{
-			GD.Print("TOO FAR, MOVING TOWARD DANCE RANGE");
+			//GD.Print("TOO FAR, MOVING TOWARD DANCE RANGE");
 			direction = (player.Position - Position).Normalized();
 			velocity = velocity.MoveToward(direction * speed, acceleration * (float)delta);
 		}
@@ -156,5 +162,15 @@ public partial class Enemy1 : CharacterBody2D
 	{
 		Velocity = new Vector2(Velocity.X, (float)(Velocity.Y + GRAVITY * delta));
 
+	}
+	    public void TakeDamage(int damage)
+    {
+		healthBar.enemyhp -= damage;
+		healthBar.Value = healthBar.enemyhp;
+        if (healthBar.Value <= 0)
+        {
+            QueueFree(); 
+        	
+   		 }
 	}
 }

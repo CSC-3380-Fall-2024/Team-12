@@ -1,11 +1,19 @@
-[gd_scene load_steps=13 format=4 uid="uid://xi68dqayttfh"]
+[gd_scene load_steps=22 format=4 uid="uid://xi68dqayttfh"]
 
+[ext_resource type="Script" path="res://Assets/Overworld/WorldPt1.cs" id="1_h0dik"]
 [ext_resource type="Texture2D" uid="uid://bkyglrriajc7y" path="res://Tiles.png" id="2_rxm5n"]
 [ext_resource type="Texture2D" uid="uid://cbx2cwlpfd35t" path="res://TX Tileset Grass.png" id="2_v6e4b"]
 [ext_resource type="Texture2D" uid="uid://bio1l67a36slf" path="res://City Prop Tileset update 2.png" id="4_pc6f6"]
 [ext_resource type="Texture2D" uid="uid://dwlleqpff0v8y" path="res://Building.png" id="5_mv8ib"]
-[ext_resource type="PackedScene" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
+[ext_resource type="PackedScene" uid="uid://dnmgc3a08ihsk" path="res://Assets/Overworld/mc_boy.tscn" id="5_u013e"]
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneEntrance.cs" id="6_63vfm"]
+[ext_resource type="PackedScene" uid="uid://cdit7iaahsp5m" path="res://Assets/Nodes/NPC.tscn" id="7_5thep"]
+[ext_resource type="PackedScene" uid="uid://bomb86kfqp6c2" path="res://Assets/Sounds/TopDownAmbient.tscn" id="8_cyarh"]
+[ext_resource type="PackedScene" uid="uid://8ck77pyhdslr" path="res://Assets/Sounds/TopDownMusic.tscn" id="9_a52p8"]
+[ext_resource type="PackedScene" uid="uid://ov6b8424yc5l" path="res://Assets/Sprite/Key.tscn" id="9_j0k0k"]
+[ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="12_36wtn"]
+[ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="12_t7dee"]
+[ext_resource type="Script" path="res://Assets/Overworld/BossLevelEntrance.cs" id="13_ddubd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8ffir"]
 texture = ExtResource("2_v6e4b")
@@ -2594,7 +2602,11 @@ sources/3 = SubResource("TileSetAtlasSource_h8stt")
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6lx1"]
 radius = 35.0571
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_q32fo"]
+radius = 36.0139
+
 [node name="world" type="Node2D"]
+script = ExtResource("1_h0dik")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ocjq0")
@@ -2615,17 +2627,76 @@ tile_map_data = PackedByteArray("AAD8/+j/AQB0ACUAAAD8/+n/AQB0ACYAAAD8/+r/AQB0ACc
 tile_set = SubResource("TileSet_ocjq0")
 
 [node name="MC-boy" parent="TileMap" instance=ExtResource("5_u013e")]
-position = Vector2(1, 0)
 
 [node name="Camera2D" type="Camera2D" parent="TileMap/MC-boy"]
+position = Vector2(-4, 0)
+
+[node name="Button" type="Button" parent="TileMap/MC-boy/Camera2D"]
+offset_left = 444.0
+offset_top = -317.0
+offset_right = 572.0
+offset_bottom = -260.0
+text = "Settings"
 
 [node name="LevelOneEntrance" type="Area2D" parent="."]
-position = Vector2(826, 278)
+position = Vector2(830, 286)
 script = ExtResource("6_63vfm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelOneEntrance"]
 position = Vector2(-771, -542)
 shape = SubResource("CircleShape2D_m6lx1")
 
+[node name="NPC" parent="." instance=ExtResource("7_5thep")]
+position = Vector2(-134, -162)
+scale = Vector2(0.781229, 0.769469)
+
+[node name="Key" parent="." instance=ExtResource("9_j0k0k")]
+visible = false
+position = Vector2(9, -17)
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("8_cyarh")]
+
+[node name="AudioStreamPlayer2" parent="." instance=ExtResource("9_a52p8")]
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Loading" parent="CanvasLayer" instance=ExtResource("12_t7dee")]
+visible = false
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("12_36wtn")]
+visible = false
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="BossLevelEntrance" type="Area2D" parent="."]
+position = Vector2(154, -44)
+script = ExtResource("13_ddubd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossLevelEntrance"]
+position = Vector2(527, -199)
+shape = SubResource("CircleShape2D_q32fo")
+
+[node name="LevelOneLabel" type="Label" parent="."]
+offset_left = 17.0
+offset_top = -437.0
+offset_right = 94.0
+offset_bottom = -414.0
+text = "Level One"
+
+[node name="BossLevelLabel" type="Label" parent="."]
+offset_left = 555.0
+offset_top = -426.0
+offset_right = 823.0
+offset_bottom = -403.0
+text = "Boss Level (Key from NPC required)"
+
+[connection signal="pressed" from="TileMap/MC-boy/Camera2D/Button" to="." method="_on_button_pressed_overworldsettings"]
 [connection signal="body_entered" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LevelOneEntrance" to="LevelOneEntrance" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="BossLevelEntrance" to="BossLevelEntrance" method="_on_body_entered_boss"]
+[connection signal="body_exited" from="BossLevelEntrance" to="BossLevelEntrance" method="_on_body_exitedboss"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://fi8amgcbnyiw"]
+
+[ext_resource type="Texture2D" uid="uid://v4x1i1ru2wwx" path="res://Assets/Overworld/dialogBackground.png" id="1_fsm8g"]
+[ext_resource type="Script" path="res://Assets/Scripts/Dialog.cs" id="1_qdj08"]
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -577.0
+offset_bottom = -509.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qdj08")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_fsm8g")
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 57.0
+offset_right = 340.0
+offset_bottom = 279.0
+theme_override_font_sizes/normal_font_size = 10

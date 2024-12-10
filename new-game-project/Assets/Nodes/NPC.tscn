@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdit7iaahsp5m"]
+
+[ext_resource type="Texture2D" uid="uid://br6sj5g5qxl7g" path="res://GrayNPC.png" id="1_bh37t"]
+[ext_resource type="Script" path="res://Assets/Scripts/NpcArea.cs" id="2_ymq5g"]
+[ext_resource type="PackedScene" uid="uid://fi8amgcbnyiw" path="res://Assets/Nodes/Dialog.tscn" id="3_yx4k3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ko5r"]
+radius = 37.2699
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NPC" type="Sprite2D" parent="."]
+position = Vector2(829.562, 392)
+scale = Vector2(2.46484, 2.1875)
+texture = ExtResource("1_bh37t")
+
+[node name="NPCArea" type="Area2D" parent="NPC"]
+script = ExtResource("2_ymq5g")
+
+[node name="Dialog" parent="NPC/NPCArea" instance=ExtResource("3_yx4k3")]
+visible = false
+offset_left = -202.0
+offset_top = 73.0
+offset_right = -122.0
+offset_bottom = 73.0
+scale = Vector2(1.16827, 0.994963)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/NPCArea"]
+position = Vector2(0.326523, 2.36604)
+shape = SubResource("CircleShape2D_1ko5r")
+
+[connection signal="body_entered" from="NPC/NPCArea" to="NPC/NPCArea" method="_on_body_entered"]
+[connection signal="body_exited" from="NPC/NPCArea" to="NPC/NPCArea" method="_on_body_exited"]

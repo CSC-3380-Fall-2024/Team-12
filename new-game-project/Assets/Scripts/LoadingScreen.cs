@@ -44,6 +44,9 @@ public partial class LoadingScreen : Control
 	}
 
 	public void EnterScene() {
+		if (string.IsNullOrEmpty(pathToScene)) {
+        	return;
+    	}	
 		GetTree().ChangeSceneToFile(pathToScene);
 	}
 }

@@ -12,16 +12,12 @@ public partial class LevelOneEntrance : Area2D
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {
-		if (entered == true) {
-			if (Input.IsAnythingPressed()) {
-				GetTree().ChangeSceneToFile("res://Assets/Levels/LevelOne.tscn");
-			}
-		}
+
 	}
 
 	public void _on_area_2d_body_entered(CharacterBody2D body) {
 		if (body == GetNode<CharacterBody2D>("/root/world/TileMap/MC-boy")) {
-			entered = true;
+			GetNode<WorldPt1>("/root/world").SwitchToLevelOne();
 		}
 	}
 
