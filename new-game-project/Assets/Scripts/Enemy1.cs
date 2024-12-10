@@ -123,7 +123,6 @@ public partial class Enemy1 : CharacterBody2D
 			danceDirection = new Vector2(randomHorizontal, 0);
 
 			danceFramesRemaining = _rng.Next(30, 90);
-			GD.Print("New Dance Direction: ", danceDirection, " for ", danceFramesRemaining, " frames");
 		}
 
 
