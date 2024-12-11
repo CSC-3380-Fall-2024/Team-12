@@ -1,24 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://dseomw7ncy04i"]
+[gd_scene load_steps=4 format=3 uid="uid://dseomw7ncy04i"]
 
-[ext_resource type="Texture2D" uid="uid://bkwxvdhsom8bl" path="res://Scenes/LargeFloor.png" id="1_sfg8q"]
-[ext_resource type="Texture2D" uid="uid://cxkj5jnadoyml" path="res://Scenes/Wall.png" id="2_4flmc"]
+[ext_resource type="Script" path="res://Assets/Levels/LevelOneBackground/Bg.cs" id="1_g1fes"]
+[ext_resource type="Texture2D" uid="uid://deqcmxgqxotaw" path="res://Assets/Levels/LevelOneBackground/Parralax_BG/LargeFloor2.png" id="2_rfgo1"]
+[ext_resource type="Texture2D" uid="uid://cjefuwn8ndas2" path="res://Assets/Levels/LevelOneBackground/Parralax_BG/LG_Wall.png" id="3_mlisp"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_g1fes")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.9, 1)
-motion_mirroring = Vector2(998, 0)
+motion_mirroring = Vector2(1996, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 scale = Vector2(1, 1.32064)
-texture = ExtResource("1_sfg8q")
+texture = ExtResource("2_rfgo1")
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.7, 1)
-motion_mirroring = Vector2(998, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(1, -4)
 scale = Vector2(1, 1.32064)
-texture = ExtResource("2_4flmc")
+texture = ExtResource("3_mlisp")
 centered = false
+region_rect = Rect2(1.575, 2.541, 998, 500)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1027.0
+offset_top = 14.0
+offset_right = 1136.0
+offset_bottom = 62.0
+text = "Settings"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed_levelone"]

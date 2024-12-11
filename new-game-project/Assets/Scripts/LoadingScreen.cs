@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 public partial class LoadingScreen : Control
@@ -42,6 +44,9 @@ public partial class LoadingScreen : Control
 	}
 
 	public void EnterScene() {
+		if (string.IsNullOrEmpty(pathToScene)) {
+        	return;
+    	}	
 		GetTree().ChangeSceneToFile(pathToScene);
 	}
 }

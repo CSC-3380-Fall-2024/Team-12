@@ -1,17 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk4gw4nd6aemu"]
+[gd_scene load_steps=12 format=3 uid="uid://1jucv388eiop"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/StartMenu.cs" id="1_0wis2"]
+[ext_resource type="Script" path="res://Assets/Scripts/StartMenu.cs" id="1_q432k"]
 [ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="2_36uyo"]
+[ext_resource type="Texture2D" uid="uid://dog7g4yts1ybp" path="res://bossbaby.png" id="2_41u0b"]
+[ext_resource type="AudioStream" uid="uid://ba1bv2083y7mw" path="res://Assets/Sounds/Button_Sounds/StartGame.mp3" id="3_g77wp"]
+[ext_resource type="PackedScene" uid="uid://q3sb0cpkiy6q" path="res://Assets/Sounds/StartMusic.tscn" id="4_fowwd"]
+[ext_resource type="AudioStream" uid="uid://cnswixk4sj023" path="res://Assets/Overworld/ButtonClick.mp3" id="5_nun2r"]
+[ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="7_8rn7t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1e11"]
+bg_color = Color(0.447059, 0.615686, 0.788235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix0n3"]
+bg_color = Color(0.448954, 0.617481, 0.787058, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srbdc"]
+bg_color = Color(0.447059, 0.615686, 0.788235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nidr5"]
+bg_color = Color(0.447059, 0.615686, 0.788235, 1)
 
 [node name="StartMenu" type="Node2D"]
-script = ExtResource("1_0wis2")
+position = Vector2(0, -2)
+scale = Vector2(1, 0.99694)
+script = ExtResource("1_q432k")
+
+[node name="Bossbaby" type="Sprite2D" parent="."]
+position = Vector2(576, 321)
+scale = Vector2(1.81094, 1)
+texture = ExtResource("2_41u0b")
 
 [node name="StartGame" type="Button" parent="."]
 offset_left = 196.0
 offset_top = 321.0
 offset_right = 480.0
 offset_bottom = 441.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_t1e11")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ix0n3")
 text = "Click To Start Game!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StartGame"]
+stream = ExtResource("3_g77wp")
+volume_db = -3.095
 
 [node name="Loading" parent="." instance=ExtResource("2_36uyo")]
 visible = false
@@ -20,7 +51,8 @@ visible = false
 offset_left = 258.0
 offset_top = 31.0
 offset_right = 853.0
-offset_bottom = 175.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 41
 text = "                   BABY GAME"
 
@@ -29,7 +61,24 @@ offset_left = 613.0
 offset_top = 320.0
 offset_right = 910.0
 offset_bottom = 440.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_srbdc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nidr5")
 text = "Settings Menu"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SettingsButton"]
+stream = ExtResource("5_nun2r")
+volume_db = 5.571
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("4_fowwd")]
+volume_db = -16.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsMenu" parent="CanvasLayer" instance=ExtResource("7_8rn7t")]
+visible = false
+
 [connection signal="pressed" from="StartGame" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="StartGame" to="StartGame/AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="SettingsButton/AudioStreamPlayer" method="play"]

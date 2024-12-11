@@ -16,12 +16,12 @@ public partial class gameover : CanvasLayer
 	
 	void _on_respawn_pressed(){
 		GD.Print("Respawning");
-		changeScene("res://Assets/Levels/game.tscn");
+		changeScene("res://Assets/Levels/LevelOne.tscn");
 	}
 	
 	void _on_quit_pressed(){
 		GD.Print("Quitting");
-		changeScene("Main Menu");
+		changeScene("res://Assets/Nodes/start_menu.tscn");
 	}
 	
 	public void changeScene(string pathToScene){

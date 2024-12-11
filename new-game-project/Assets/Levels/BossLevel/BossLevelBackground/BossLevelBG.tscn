@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://rqutm8n2ch4x"]
+
+[ext_resource type="Script" path="res://Assets/Levels/BossLevel/BossLevelBackground/BossLevelBg.cs" id="1_baibb"]
+[ext_resource type="Texture2D" uid="uid://bph8ho5thdb8o" path="res://Assets/Levels/BossLevel/BossLevelBackground/pixil-frame-0 (2).png" id="1_oegja"]
+
+[node name="BossLevelBg" type="ParallaxBackground"]
+script = ExtResource("1_baibb")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(998, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(496, 323.25)
+scale = Vector2(1, 1.3016)
+texture = ExtResource("1_oegja")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1025.0
+offset_top = 19.0
+offset_right = 1127.0
+offset_bottom = 56.0
+text = "Settings"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed_bossSettings"]
