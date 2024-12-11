@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ko5r"]
 radius = 37.2699
 
-[node name="Node2D" type="Node2D"]
+[node name="worldCharacter" type="Node2D"]
 
 [node name="NPC" type="Sprite2D" parent="."]
 position = Vector2(829.562, 392)

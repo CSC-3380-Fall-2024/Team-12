@@ -276,7 +276,7 @@ position = Vector2(10901, 471)
 position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
-position = Vector2(12749, 135)
+position = Vector2(190, 406)
 collision_layer = 255
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
@@ -295,14 +295,14 @@ position = Vector2(12470, -142)
 shape = SubResource("CircleShape2D_dsfay")
 
 [node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
-position = Vector2(12302, 247)
+position = Vector2(3359, 332)
 collision_mask = 255
 
 [node name="InteractionArea" parent="." instance=ExtResource("10_ma6qi")]
-position = Vector2(12894, 112)
+position = Vector2(836, 313)
 
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
-position = Vector2(12437, 209)
+position = Vector2(5505, 47)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
