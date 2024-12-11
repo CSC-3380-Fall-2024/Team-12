@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://rqutm8n2ch4x" path="res://Assets/Levels/BossLevel/BossLevelBackground/BossLevelBG.tscn" id="1_nlm8u"]
 [ext_resource type="Script" path="res://Assets/Levels/BossLevel/BossLevel.cs" id="1_q3bc4"]
 [ext_resource type="Texture2D" uid="uid://btn5h8rcbsf5p" path="res://Assets/Levels/LevelOneBackground/LevelOneTiles/Terrain (16x16).png" id="2_wvmv8"]
-[ext_resource type="PackedScene" uid="uid://fy28ufu458l7" path="res://Assets/Nodes/main_character.tscn" id="3_mo0fg"]
+[ext_resource type="PackedScene" uid="uid://bwwd3dxm60d6d" path="res://Assets/Nodes/main_character.tscn" id="3_mo0fg"]
 [ext_resource type="Script" path="res://Assets/Scripts/PlayerCamera.cs" id="4_0ppp5"]
 [ext_resource type="PackedScene" uid="uid://cplo0upu8dufj" path="res://Assets/Nodes/Bear.tscn" id="5_hmxjy"]
 [ext_resource type="PackedScene" uid="uid://ckhrl0wcwu07u" path="res://Assets/Nodes/settings_menu.tscn" id="6_qjdta"]
