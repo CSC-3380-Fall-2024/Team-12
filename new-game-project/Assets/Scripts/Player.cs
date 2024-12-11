@@ -8,12 +8,12 @@ using System.Text;
 
 public partial class Player : CharacterBody2D
 {
-	public float Speed = 250f;              // Max speed of the player
-	public const float JUMP_VELOCITY = -800f;     // Jump velocity
-	public const float GRAVITY = 2000f;            // Gravity force
-	public const float JUMP_DELAY = 0.08f;          // Delay in seconds before jump happens
-	public const float DECELERATION = 1000f;        // Deceleration factor
-	public const float ACCELERATION = 800f;        // Acceleration factor
+	public float Speed = 250f;           
+	public const float JUMP_VELOCITY = -800f;    
+	public const float GRAVITY = 2000f;          
+	public const float JUMP_DELAY = 0.08f;          
+	public const float DECELERATION = 1000f;     
+	public const float ACCELERATION = 800f;       
 
 	private float dashSpeed = 600f;
 	private float dashDuration = 0.2f;
@@ -144,7 +144,7 @@ private CollisionShape2D disablehitbox;
     public override void _PhysicsProcess(double delta)
 	{
 
-		//dashing
+
 
 		if (isDashing)
 		{
@@ -155,7 +155,7 @@ private CollisionShape2D disablehitbox;
 		HandleDashInput();
 
 
-		//input handling
+
 		float horizontalInput = Input.GetAxis("move_left", "move_right");
 		float velocityY = Velocity.Y;
 		float targetSpeed = horizontalInput * Speed;

@@ -3,7 +3,7 @@ using System;
 
 public partial class Enemy1 : CharacterBody2D
 {
-	//hello
+//hi
 
 	public float detectionRadius = 600f;
 	public float CLOSERANGE = 200f;
@@ -129,7 +129,6 @@ public partial class Enemy1 : CharacterBody2D
 			danceDirection = new Vector2(randomHorizontal, 0);
 
 			danceFramesRemaining = _rng.Next(30, 90);
-			//GD.Print("New Dance Direction: ", danceDirection, " for ", danceFramesRemaining, " frames");
 		}
 
 

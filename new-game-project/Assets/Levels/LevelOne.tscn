@@ -272,11 +272,25 @@ scale = Vector2(3, 1.925)
 [node name="Table7" parent="." instance=ExtResource("4_qlwbc")]
 position = Vector2(10901, 471)
 
+[node name="BgWindow" type="Sprite2D" parent="."]
+position = Vector2(2650, 150)
+texture = ExtResource("7_a4dla")
+
+[node name="BgWindow3" type="Sprite2D" parent="."]
+position = Vector2(6100, 150)
+texture = ExtResource("7_a4dla")
+
+[node name="BgWindow2" type="Sprite2D" parent="."]
+position = Vector2(4300, 200)
+texture = ExtResource("7_a4dla")
+
 [node name="Bed5" parent="." instance=ExtResource("5_w8wfl")]
 position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
-position = Vector2(190, 406)
+
+position = Vector2(200, 200)
+
 collision_layer = 255
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
@@ -295,14 +309,16 @@ position = Vector2(12470, -142)
 shape = SubResource("CircleShape2D_dsfay")
 
 [node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
-position = Vector2(3359, 332)
+
+position = Vector2(2100, 200)
 collision_mask = 255
 
 [node name="InteractionArea" parent="." instance=ExtResource("10_ma6qi")]
-position = Vector2(836, 313)
+position = Vector2(3400, 400)
 
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
-position = Vector2(5505, 47)
+position = Vector2(5150, 100)
+
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -317,19 +333,6 @@ offset_bottom = 0.0
 visible = false
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("14_8gg85")]
-stream = null
-
-[node name="BgWindow" type="Sprite2D" parent="."]
-position = Vector2(2650, 150)
-texture = ExtResource("7_a4dla")
-
-[node name="BgWindow2" type="Sprite2D" parent="."]
-position = Vector2(4300, 200)
-texture = ExtResource("7_a4dla")
-
-[node name="BgWindow3" type="Sprite2D" parent="."]
-position = Vector2(6100, 150)
-texture = ExtResource("7_a4dla")
 
 [node name="Node2D" parent="." instance=ExtResource("22_fqf7a")]
 position = Vector2(572, 534)
