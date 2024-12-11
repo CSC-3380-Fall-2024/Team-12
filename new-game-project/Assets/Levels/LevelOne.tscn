@@ -288,9 +288,7 @@ texture = ExtResource("7_a4dla")
 position = Vector2(11939, 389)
 
 [node name="MainCharacter" parent="." instance=ExtResource("11_mjt7q")]
-
 position = Vector2(200, 200)
-
 collision_layer = 255
 
 [node name="Camera2D" type="Camera2D" parent="MainCharacter"]
@@ -309,7 +307,6 @@ position = Vector2(12470, -142)
 shape = SubResource("CircleShape2D_dsfay")
 
 [node name="InteractionAreaCookie" parent="." instance=ExtResource("9_4ka2h")]
-
 position = Vector2(2100, 200)
 collision_mask = 255
 
@@ -318,7 +315,6 @@ position = Vector2(3400, 400)
 
 [node name="InteractionPotion" parent="." instance=ExtResource("12_moxr0")]
 position = Vector2(5150, 100)
-
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

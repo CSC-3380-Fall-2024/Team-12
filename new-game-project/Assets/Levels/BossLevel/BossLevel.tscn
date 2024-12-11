@@ -209,7 +209,7 @@ scale = Vector2(0.75, 1.925)
 position = Vector2(432, 320)
 
 [node name="Shelf3" parent="." instance=ExtResource("8_l7al2")]
-position = Vector2(816, 152)
+position = Vector2(815, 198)
 
 [node name="Table" parent="." instance=ExtResource("9_sk2mh")]
 position = Vector2(1632, 472)
