@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/LevelOneExit.cs" id="8_vumf8"]
 [ext_resource type="PackedScene" uid="uid://ci75vtde4y27b" path="res://interaction_area_cookie.tscn" id="9_4ka2h"]
 [ext_resource type="PackedScene" uid="uid://c3ij78lnm7d8j" path="res://interaction_area.tscn" id="10_ma6qi"]
-[ext_resource type="PackedScene" uid="uid://fy28ufu458l7" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
+[ext_resource type="PackedScene" uid="uid://bwwd3dxm60d6d" path="res://Assets/Nodes/main_character.tscn" id="11_mjt7q"]
 [ext_resource type="PackedScene" uid="uid://swqabeeiets2" path="res://interaction_potion.tscn" id="12_moxr0"]
 [ext_resource type="PackedScene" uid="uid://d2v4otnk07idh" path="res://Assets/Sounds/LevelOneMusic.tscn" id="14_8gg85"]
 [ext_resource type="PackedScene" uid="uid://c68rrv4c1lfo" path="res://Assets/Nodes/loading.tscn" id="14_rcryj"]
