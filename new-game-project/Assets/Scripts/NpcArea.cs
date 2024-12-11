@@ -4,6 +4,7 @@ using System;
 public partial class NpcArea : Area2D
 {
 	private bool entered = false;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -28,4 +29,5 @@ public partial class NpcArea : Area2D
 	public void _on_body_exited(Node2D body) {
 		entered = false;
 	}
+
 }
