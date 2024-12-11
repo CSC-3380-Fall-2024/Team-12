@@ -182,10 +182,8 @@ public partial class Bear : CharacterBody2D
            
 			Node endgame = deathbear.Instantiate();
 			var gameNode = GetParent() as Node2D;
-			//GD.Print("GameNode is: ", gameNode.Name); 
         		endgame.Name = "placeholderforboss"; 
 				gameNode.AddChild(endgame);
-				//GD.Print("Added placeholderforboss to: ", gameNode.Name);
 				 QueueFree(); 
 			
         	

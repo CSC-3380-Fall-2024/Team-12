@@ -15,10 +15,8 @@ public partial class BossLevel : Node2D
 
 	}
 	private void _on_child_entered_tree(Node child){
-		 GD.Print($"Node entered: {child.Name}");
     if (child.Name == "placeholderforboss")
     {
-        GD.Print("Placeholder detected!");
 		GetTree().ChangeSceneToFile("res://Assets/Levels/BossLevel/ending.tscn");
     }
 	}

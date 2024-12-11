@@ -325,7 +325,6 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
     }
 		public void AreaEnteredHP(Node body)
 			{
-				 GD.Print($"body_entered triggered by: {body.Name}");
 		if (body is Player)
 		{
 			interactableCookie = true;
@@ -337,8 +336,7 @@ if (Input.IsActionJustPressed("hit") && IsOnFloor())
 				interactable = true;
 
 				interactableCookie = true;
-				interactablePotion = true; 
-				GD.Print("Player entered a general area");
+				interactablePotion = true;
 
 			
 			}
