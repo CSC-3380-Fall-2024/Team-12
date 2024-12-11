@@ -15,7 +15,7 @@
 2. Clone the repository
 3. In the Team-12 Repository navigate to the new-game-project folder. This contains all of the material we used for and implemented in our game.
 4. Towards the bottom of the folder there is a file named ‘project.godot’ and opening this file with godot will open the entire project in the Godot game engine
-5. Once in the Godot engine, all you have to do is click the small play arrow in the top right corner of the app and the game will run from the start screen. If you want to develop, work, or mess around with other scenes you can open the scene and click the 6th button from the left that looks like a play button in a clapperboard.
+5. Once in the Godot engine(if error on music file hit ok), all you have to do is click the small play arrow in the top right corner of the app and the game will run from the start screen. If you want to develop, work, or mess around with other scenes you can open the scene and click the 6th button from the left that looks like a play button in a clapperboard.
 
 **Controls:**
 
