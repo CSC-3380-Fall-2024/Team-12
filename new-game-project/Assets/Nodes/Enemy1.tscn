@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Assets/Scripts/Enemy1.cs" id="1_lhvwn"]
 [ext_resource type="Texture2D" uid="uid://boeidu4acjivl" path="res://Assets/Sprite/penguin.png" id="2_pvbrb"]
-[ext_resource type="PackedScene" uid="uid://bpt4dkgtton51" path="res://Assets/Nodes/enemy_hp.tscn" id="3_xsf2h"]
+[ext_resource type="PackedScene" path="res://Assets/Nodes/enemy_hp.tscn" id="3_xsf2h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1imd8"]
 atlas = ExtResource("2_pvbrb")

@@ -3,7 +3,7 @@ using System;
 
 public partial class Enemy1 : CharacterBody2D
 {
-//hi
+	//hi
 
 	public float detectionRadius = 600f;
 	public float CLOSERANGE = 200f;
@@ -13,6 +13,15 @@ public partial class Enemy1 : CharacterBody2D
 	public const float GRAVITY = 2000f;
 	public const float DECELERATION = 1000f;
 	public const float ACCELERATION = 800f;
+
+
+
+	//accel and decel for dance pattern
+	public float acceleration = 1000f;
+	public float deceleration = 1000f;
+	private Vector2 velocity = new Vector2();
+
+	private AnimatedSprite2D sprite;
 
 	private Random _rng = new Random();
 	private int danceFramesRemaining = 0;
@@ -39,13 +48,32 @@ public partial class Enemy1 : CharacterBody2D
 		player = GetNode<Node2D>("../MainCharacter");
 		healthBar = GetNode<ProgressBarEnemy>("Enemy_hp/ProgressBarEnemy");
 		healthBar.enemyhp = 4;
-	
+		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+
+
 	}
 
 
 	public override void _PhysicsProcess(double delta)
 	{
-		
+
+
+		if (Velocity.X > 0)
+		{
+			sprite.FlipH = false;
+		}
+		else if (Velocity.X < 0)
+		{
+			sprite.FlipH = true;
+		}
+
+		if (sprite == null)
+		{
+			GD.PrintErr("2d sprite not found");
+			return;
+		}
+
 		applyGravity(delta);
 		HandleStateTransitions();
 
@@ -72,19 +100,20 @@ public partial class Enemy1 : CharacterBody2D
 			HandleDance(delta);
 		}
 
+		Velocity = velocity;
 		MoveAndSlide();
-		
+
+
 	}
+
+
 
 	private void HandleIdle()
 	{
 		//GD.Print("IDLE");
 	}
 
-	public float acceleration = 1000f;
-	public float deceleration = 1000f;
 
-	private Vector2 velocity = new Vector2();
 
 	private void handleActive(double delta)
 	{
@@ -163,14 +192,14 @@ public partial class Enemy1 : CharacterBody2D
 		Velocity = new Vector2(Velocity.X, (float)(Velocity.Y + GRAVITY * delta));
 
 	}
-	    public void TakeDamage(int damage)
-    {
+	public void TakeDamage(int damage)
+	{
 		healthBar.enemyhp -= damage;
 		healthBar.Value = healthBar.enemyhp;
-        if (healthBar.Value <= 0)
-        {
-            QueueFree(); 
-        	
-   		 }
+		if (healthBar.Value <= 0)
+		{
+			QueueFree();
+
+		}
 	}
 }
