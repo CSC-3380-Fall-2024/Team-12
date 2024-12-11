@@ -11,7 +11,7 @@
 
 **How to Run:**
 
-1. Before cloning, install Godot. This game is a godot project and requires Godot 4.3 - .NET version, the link can be found here for [Windows](https://godotengine.org/download/windows/) and [Mac](https://godotengine.org/download/macos/). There will also be a link at the bottom of the page for a tutorial to download and set up Godot. The .NET version is necessary because we programmed the game in C#, not GDScript.
+1. Before cloning, install Godot. This game is a godot project and requires Godot 4.3 - .NET version, the link can be found here for [Windows](https://godotengine.org/download/windows/) and [Mac](https://godotengine.org/download/macos/). There will also be a link at the bottom of the page for a tutorial to download and set up Godot. The .NET version is necessary because we programmed the game in C#, not GDScript. You also need to make sure you download the .NET SDK [here] (https://dotnet.microsoft.com/en-us/download).
 2. Clone the repository
 3. In the Team-12 Repository navigate to the new-game-project folder. This contains all of the material we used for and implemented in our game.
 4. At the very bottom of the folder there is a file named ‘project.godot’ and opening this file will open the entire project in the Godot game engine
